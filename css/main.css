@@ -104,6 +104,10 @@ section {
     margin-bottom: 100px;
 }
 
+#hero {
+    margin-bottom: 130px;
+}
+
 .eyebrow {
     display: block;
     color: var(--eyebrow);
