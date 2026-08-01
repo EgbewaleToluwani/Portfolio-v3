@@ -4,6 +4,17 @@
     box-sizing: border-box;
 }
 
+html { scroll-behavior: smooth; }
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: sans-serif;
+    transition: background 400ms ease, color 400ms ease;
+    overflow-x: hidden;
+}
+
+/* -------------------- header / logo -------------------- */
 header {
     position: fixed;
     top: 0;
@@ -16,277 +27,435 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
 }
 
-header a {
-    text-decoration: none;
-    color: #AEA5A7;
-}
+header a { text-decoration: none; color: #AEA5A7; }
 
-.logo {
-    display: flex;
-    align-items: center;
-}
+.logo { display: flex; align-items: center; }
 
 .logo-t {
     margin-left: 3px;
     background: #58A6FF;
-    height: 20px;
-    width: 20px;
+    height: 15px;
+    width: 15px;
     clip-path: polygon(10% 0, 100% 0, 90% 20%, 60% 20%, 45% 100%, 25% 100%, 40% 20%, 0 20%);
 }
 
 .logo-e {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 3px;
     margin-right: 3px;
 }
 
 .logo-e-line {
     background: #58A6FF;
-    height: 3.5px;
-    width: 20px;
+    height: 3px;
+    width: 15px;
     clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%);
 }
 
-.logo-e-line:first-of-type {
-    margin-left: 3px;
+.logo-e-line:first-of-type { margin-left: 3px; }
+.logo-e-line:nth-of-type(2) { margin-left: 0px; background: white; }
+.logo-e-line:last-of-type { margin-left: -3px; }
+
+#mode-label { display: none; }
+
+.mode-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.logo-e-line:nth-of-type(2) {
-    margin-left: 0px;
-    background: white;
+#switchMode {
+    position: relative;
+    width: 48px;
+    height: 30px;
+    padding: 0;
+    border-radius: 999px;
+    /* border: none; */
+    background: var(--filterChipBack);
 }
 
-.logo-e-line:last-of-type {
-    margin-left: -3px;
+#switchMode::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--projectsButton));
+    transition: transform 200ms ease;
 }
 
+#switchMode:hover {
+    border-color: var(--accent);
+    box-shadow: var(--switchGlow);
+}
 
+:root[data-mode="ops"] #switchMode::after {
+    transform: translateX(22px);
+}
 
+/* -------------------- sections, general -------------------- */
+section {
+    padding: 0 25px;
+    margin-bottom: 100px;
+}
 
+.eyebrow {
+    display: block;
+    color: var(--eyebrow);
+    font-size: 12.6px;
+    font-family: "JetBrains Mono", monospace;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
 
+.heading {
+    font-family: var(--headingsFont);
+    font-size: 30px;
+    margin: 10px 0 35px;
+    color: var(--white);
+}
 
+/* -------------------- hero -------------------- */
+#hero {
+    margin-top: var(--margin-top);
+    padding: 0 25px;
+}
 
+#hero-line {
+    margin: 20px 0;
+    color: var(--white);
+    line-height: var(--heroLineLineHeight);
+    font-size: var(--heroLineSize);
+    font-family: var(--heroLineFont);
+}
 
+#hero-lead {
+    color: var(--heroLeadColor);
+    font-size: var(--heroLeadSize);
+    font-family: var(--heroLeadFont);
+    line-height: 23px;
+    max-width: 46ch;
+}
 
+#hero a { display: inline-block; text-decoration: none; }
 
-@media (max-width: 768px) {
-    header {
+#hero button {
+    padding: 15px 20px;
+    border-radius: 25px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#hero a:first-of-type button {
+    background: linear-gradient(90deg, var(--projectsButton));
+    border: none;
+    margin: 20px 10px 10px 0;
+    color: #1C1A18;
+}
+
+#hero a:first-of-type button:hover {
+    box-shadow: var(--cardGlow);
+}
+
+#hero a:last-of-type button {
+    border: 2px solid var(--contactButtonBorder);
+    color: var(--white);
+    background: transparent;
+    transition: box-shadow 200ms ease;
+}
+
+#hero a:last-of-type button:hover {
+    box-shadow: var(--switchGlow);
+}
+
+/* -------------------- about -------------------- */
+#about-bio {
+    color: var(--aboutBioColor);
+    font-family: var(--aboutBioFont);
+    line-height: var(--aboutBioHeight);
+    max-width: 60ch;
+}
+
+/* -------------------- toolbox / roles -------------------- */
+#roles-grid {
+    display: grid;
+    gap: 20px;
+}
+
+.role-card {
+    background: var(--roleCardBack);
+    padding: 20px 25px;
+    border-radius: 20px;
+    border: 1px solid var(--cardBorder);
+    box-shadow: var(--cardGlow);
+    transition: border-color 200ms ease, transform 200ms ease;
+}
+
+.role-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+}
+
+.role-card h2 {
+    color: var(--roleCardHeadC);
+    font-size: 22px;
+    font-family: var(--roleCardHead);
+    margin-bottom: 10px;
+}
+
+.role-card p {
+    font-size: 14px;
+    font-family: var(--roleCardBody);
+    color: var(--roleCardBodyC);
+    line-height: 20px;
+}
+
+/* -------------------- projects -------------------- */
+.filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.filter-chip {
+    padding: 8px 12px;
+    border-radius: 25px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 14px;
+    background: var(--filterChipBack);
+    border: none;
+    color: var(--roleCardBodyC);
+    cursor: pointer;
+    transition: border-color 200ms ease;
+}
+
+.filter-chip:hover { border-color: var(--accent); }
+
+.filter-chip.active {
+    background: linear-gradient(90deg, var(--projectsButton));
+    border-color: transparent;
+    color: black;
+    box-shadow: var(--cardGlow);
+}
+
+#projects-grid {
+    display: grid;
+    gap: 20px;
+}
+
+.project-card {
+    background: var(--roleCardBack);
+    padding: 20px 25px;
+    border-radius: 20px;
+    border: 1px solid var(--cardBorder);
+    box-shadow: var(--cardGlow);
+    transition: border-color 200ms ease, transform 200ms ease;
+}
+
+.project-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+}
+
+.project-card h3 {
+    color: var(--white);
+    font-family: var(--roleCardHead);
+    font-size: 22px;
+}
+
+.project-card p {
+    color: var(--roleCardBodyC);
+    font-family: var(--aboutBioFont);
+    font-size: 14px;
+    margin: 10px 0 15px;
+}
+
+.project-card > div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.project-card span {
+    line-height: 35px;
+    color: var(--accent);
+    background: var(--tagsBack);
+    padding: 0px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+/* -------------------- contact -------------------- */
+form { display: flex; flex-direction: column; }
+
+form p {
+    color: var(--formTextColor);
+    font-size: 13px;
+    font-family: "JetBrains Mono", monospace;
+}
+
+form input,
+form textarea {
+    width: 100%;
+    border-radius: 10px;
+    padding-left: 10px;
+    margin: 5px 0 15px;
+    background: var(--formInputBack);
+    border: 1px solid var(--cardBorder);
+    transition: border-color 200ms ease;
+    color: var(--white);
+    font-family: inherit;
+    font-size: 14px;
+}
+
+form input:focus,
+form textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+form input { height: 45px; }
+
+form textarea {
+    min-height: 120px;
+    padding-top: 10px;
+    resize: vertical;
+}
+
+form button {
+    width: 100%;
+    background: linear-gradient(90deg, var(--projectsButton));
+    border: none;
+    height: 45px;
+    border-radius: 20px;
+    text-align: start;
+    padding-left: 20px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+form button:hover {
+    box-shadow: var(--cardGlow);
+}
+
+.links {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.links a {
+    margin-bottom: 10px;
+    background: linear-gradient(90deg, var(--projectsButton) 90%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: none;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 14px;
+}
+
+/* -------------------- footer -------------------- */
+footer {
+    color: var(--footerColor);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 13px;
+    text-align: center;
+    line-height: 22px;
+    padding-bottom: 25px;
+}
+
+/* -------------------- larger screens -------------------- */
+@media (min-width: 768px) {
+    /* toggle becomes a pill + sliding dot, only from here up */
+    #mode-label {
+        display: inline;
+        font-family: "JetBrains Mono", monospace;
         font-size: 12px;
+        color: var(--roleCardBodyC);
+        text-transform: lowercase;
     }
 
-    .logo-t {
-        width: 15px;
-        height: 15px;
-    }
-
-    .logo-e {
-        gap: 3px;
-    }
-
-    .logo-e-line {
-        width: 15px;
-        height: 3px;
-    }
-
-    section {
-        margin-bottom: 155px;
+    section, #hero {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 0 40px;
+        margin-bottom: 100px;
     }
 
     #hero {
-        margin-top: var(--margin-top);
-        padding: 0 25px;
-    }
-
-    .eyebrow {
-        color: var(--accent);
-        font-size: 12.6px;
-        font-family: "JetBrains Mono", monospace;
-        letter-spacing: 0.5px;
+        margin-top: var(--largeMargin-top);
+        margin-bottom: 125px;
     }
 
     #hero-line {
-        margin: 20px 0;
-        color: var(--white);
-        line-height: var(--heroLineLineHeight);
-        font-size: var(--heroLineSize);
-        font-family: var(--heroLineFont)
+        font-size: 64px;
+        line-height: 70px;
+        width: 95%;
     }
 
     #hero-lead {
-        color: var(--heroLeadColor);
-        font-size: var(--heroLeadSize);
-        font-family: var(--heroLeadFont);
-        line-height: 23px;
+        font-size: 15px;
+        line-height: 30px;
     }
 
-    #hero button  {
-        padding: 15px 20px;
-        border-radius: 25px;
-        font-family: "JetBrains Mono", monospace;
+    .hero-buttons {
+        margin-top: 20px;
+    }
+
+    .eyebrow {
         font-size: 14px;
-    }
-
-    #hero a:first-of-type button {
-        background: linear-gradient(90deg, var(--projectsButton));
-        border: none;
-        margin: 20px 0 10px;
-    }
-
-    #hero a:last-of-type button {
-        border: 2px solid var(--contactButtonBorder);
-        color: var(--white);
-        background: transparent;
     }
 
     .heading {
-        font-family: var(--headingsFont);
-        font-size: 30px;
-        margin: 10px 0 35px;
-        color: var(--white);
+        font-size: 41.6px;
     }
 
     #about-bio {
-        color: var(--aboutBioColor);
-        font-family: var(--aboutBioFont);
-        line-height: var(--aboutBioHeight);
+        font-size: 17.28px;
+    }
+
+    #roles-grid { 
+        grid-template-columns: repeat(3, 1fr); 
     }
 
     .role-card {
-        background: var(--roleCardBack);
-        margin-bottom: 20px;
-        padding: 20px 25px;
-        border-radius: 20px;
+        
     }
 
     .role-card h2 {
-        color: var(--roleCardHeadC);
         font-size: 22px;
-        font-family: var(--roleCardHead);
-        margin-bottom: 10px;
+        margin-bottom: 15px;
     }
 
     .role-card p {
-        font-size: 14px;
-        font-family: var(--roleCardBody);
-        color: var(--roleCardBodyC);
-        line-height: 20px;
+        font-size: 15px;
     }
 
-    .filter-chip {
-        padding: 8px 12px;
-        border-radius: 25px;
-        font-family: "JetBrains Mono", monospace;
-        font-size: 14px;
-        margin-bottom: 20px;
-        background: var(--filterChipBack);
-        border: none;
-        color: var(--roleCardBodyC);
-    }
-
-    .active {
-        background: linear-gradient(90deg, var(--projectsButton));
-        color: black;
+    #projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 280px));
+        justify-content: center;
     }
 
     .project-card {
-        background: var(--roleCardBack);
-        margin-bottom: 20px;
-        padding: 20px 25px;
-        border-radius: 20px;
+        padding: 20px 30px;
     }
 
     .project-card h3 {
-        color: var(--white);
-        font-family: var(--roleCardHead);
-        font-size: 22px;
-    }
+        font-size: 25px;
+        min-height: 65px;
+    }   
 
     .project-card p {
-        color: var(--roleCardBodyC);
-        font-family: var(--aboutBioFont);
-        font-size: 14px;
-        margin: 10px 0 15px;
-    }
-
-    .project-card span {
-        margin-right: 5px;
-        line-height: 35px;
-        color: var(--accent);
-        background: var(--tagsBack);
-        padding: 5px 10px;
-        border-radius: 20px;
-        font-size: 14px;
-    }
-
-    #contact {
-        margin-bottom: 85px;
-    }
-
-    form p {
-        color: var(--formTextColor);
-        font-size: 13px;
-        font-family: "JetBrains Mono", monospace;;
-    }
-
-    form input {
-        width: 100dvw;
-        height: 45px;
-        border-radius: 10px;
-        padding-left: 10px;
-        margin: 5px 0 15px;
-        background: var(--formInputBack);
-        border: none;
-        color: var(--white);
-    }
-
-    form textarea {
-        min-width: 100dvw;
-        max-width: 100dvw;
-        min-height: 120px;
-        border-radius: 10px;
-        padding-top: 10px;
-        padding-left: 10px;
-        margin: 5px 0 20px;
-        background: var(--formInputBack);
-        border: none;
-        color: var(--white);
-    }
-
-    form button {
-        width: 100dvw;
-        background: linear-gradient(90deg, var(--projectsButton));
-        height: 45px;
-        border-radius: 20px;
-        text-align: start;
-        padding-left: 20px;
-        font-family: "JetBrains Mono", monospace;
-        font-size: 14px;
-    }
-
-    .links {
-        margin-top: 40px;
-    }
-
-    .links a {
-        margin-bottom: 10px;
-        background: linear-gradient(90deg, var(--projectsButton) 90%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        text-decoration: none;
-        font-family: "JetBrains Mono", monospace;
-        font-size: 14px;
-    }
-
-    footer {
-        color: var(--footerColor);
-        font-family: "JetBrains Mono", monospace;
-        font-size: 13px;
-        text-align: center;
-        line-height: 22px;
-        padding-bottom: 25px;
+        font-size: 15px;
+        margin: 15px 0 20px;
+        min-height: 70px;
     }
 }

@@ -2,9 +2,10 @@ let activeFilter = "all";
 
 const modeSwitch=()=> {    
     let mode = document.documentElement.getAttribute("data-mode")
+    let modeLabel = document.getElementById("mode-label")
     mode==="studio"
-    ?(document.documentElement.setAttribute("data-mode", "ops"), renderRoles("ops"), renderCopy("ops"))
-    :(document.documentElement.setAttribute("data-mode", "studio"), renderRoles("studio"), renderCopy("studio"));
+    ?(document.documentElement.setAttribute("data-mode", "ops"), renderRoles("ops"), renderCopy("ops"), modeLabel.textContent="ops")
+    :(document.documentElement.setAttribute("data-mode", "studio"), renderRoles("studio"), renderCopy("studio"), modeLabel.textContent="studio");
 }
 
 

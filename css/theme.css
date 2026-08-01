@@ -2,8 +2,9 @@
     --bg: #211527;
     --text: #f6efe9;
     --accent: #ff7a66;
-    --eyebrow: #AA544E;
+    --eyebrow: #FF7A66;
     --margin-top: 190px;
+    --largeMargin-top: 290px;
     --heroLineSize: 41px;
     --heroLineFont: "Fraunces", serif;
     --heroLineLineHeight: 45px;
@@ -27,14 +28,18 @@
     --formTextColor: #C5B3C9;
     --formInputBack: #2C1C33;
     --footerColor: #C5B3C9;
+    --cardBorder: #4A3352;
+    --cardGlow: 0 8px 30px -8px rgba(255, 122, 102, 0.35);
+    --switchGlow: 0 0 12px rgba(255, 122, 102, 0.45);
 }
 
 :root[data-mode="ops"] {
     --bg: #071a1d;
     --text: #e4fbf5;
     --accent: #39e1c9;
-    --eyebrow: #29A292;
+    --eyebrow: #39E1C9;
     --margin-top: 130px;
+    --largeMargin-top: 230px;
     --heroLineSize: 41px;
     --heroLineFont: "JetBrains Mono", monospace;
     --heroLineLineHeight: 47px;
@@ -58,6 +63,9 @@
     --formTextColor: #7FB8AE;
     --formInputBack: #0D262A;
     --footerColor: #7FB8AE;
+    --cardBorder: #1C4A4A;
+    --cardGlow: 0 8px 30px -8px rgba(57, 225, 201, 0.35);
+    --switchGlow: 0 0 12px rgba(57, 225, 201, 0.45);
 }
 
 body {

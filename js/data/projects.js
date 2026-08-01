@@ -42,7 +42,7 @@ const PROJECTS = [
         tagline: "This site. Two personas, one build.",
         description: "This site. A dual-mode, interactive portfolio built to be explored rather than scrolled — bold Studio/Ops duality, an animated mode transition, and real interaction instead of a static resume in disguise.",
         tags: [
-            "html", "css", "javascript", "ui-design", "interaction-design", "responsive"
+            "html", "css", "javascript", "ui-design", "responsive"
         ],
         video: null
     },
