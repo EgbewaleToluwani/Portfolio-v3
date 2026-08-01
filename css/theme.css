@@ -5,11 +5,11 @@
     --eyebrow: #AA544E;
     --margin-top: 190px;
     --heroLineSize: 41px;
-    --heroLineFont: 'Times New Roman', Times, serif;
+    --heroLineFont: "Fraunces", serif;
     --heroLineLineHeight: 45px;
     --white: #F6EFE9;
     --heroLeadColor: #C5B3C9;
-    --heroLeadFont: Arial;
+    --heroLeadFont: "Public Sans", sans-serif;
     --heroLeadSize: 14px;
     --projectsButton: #FD8265, #F5B061;
     --contactButtonBorder: #FD8265;
@@ -24,6 +24,9 @@
     --roleCardBodyC: #C5B3C9;
     --filterChipBack: #2C1C33;
     --tagsBack: #512D42;
+    --formTextColor: #C5B3C9;
+    --formInputBack: #2C1C33;
+    --footerColor: #C5B3C9;
 }
 
 :root[data-mode="ops"] {
@@ -52,6 +55,9 @@
     --roleCardBodyC: #7FB8AE;
     --filterChipBack: #0D262A;
     --tagsBack: #16484C;
+    --formTextColor: #7FB8AE;
+    --formInputBack: #0D262A;
+    --footerColor: #7FB8AE;
 }
 
 body {

@@ -52,7 +52,7 @@ header a {
 }
 
 .logo-e-line:first-of-type {
-    margin-left: 2px;
+    margin-left: 3px;
 }
 
 .logo-e-line:nth-of-type(2) {
@@ -220,5 +220,73 @@ header a {
         padding: 5px 10px;
         border-radius: 20px;
         font-size: 14px;
+    }
+
+    #contact {
+        margin-bottom: 85px;
+    }
+
+    form p {
+        color: var(--formTextColor);
+        font-size: 13px;
+        font-family: "JetBrains Mono", monospace;;
+    }
+
+    form input {
+        width: 100dvw;
+        height: 45px;
+        border-radius: 10px;
+        padding-left: 10px;
+        margin: 5px 0 15px;
+        background: var(--formInputBack);
+        border: none;
+        color: var(--white);
+    }
+
+    form textarea {
+        min-width: 100dvw;
+        max-width: 100dvw;
+        min-height: 120px;
+        border-radius: 10px;
+        padding-top: 10px;
+        padding-left: 10px;
+        margin: 5px 0 20px;
+        background: var(--formInputBack);
+        border: none;
+        color: var(--white);
+    }
+
+    form button {
+        width: 100dvw;
+        background: linear-gradient(90deg, var(--projectsButton));
+        height: 45px;
+        border-radius: 20px;
+        text-align: start;
+        padding-left: 20px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 14px;
+    }
+
+    .links {
+        margin-top: 40px;
+    }
+
+    .links a {
+        margin-bottom: 10px;
+        background: linear-gradient(90deg, var(--projectsButton) 90%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-decoration: none;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 14px;
+    }
+
+    footer {
+        color: var(--footerColor);
+        font-family: "JetBrains Mono", monospace;
+        font-size: 13px;
+        text-align: center;
+        line-height: 22px;
+        padding-bottom: 25px;
     }
 }
