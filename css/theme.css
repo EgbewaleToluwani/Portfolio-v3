@@ -1,0 +1,72 @@
+:root[data-mode="studio"] {
+    --bg: #211527;
+    --text: #f6efe9;
+    --accent: #ff7a66;
+    --eyebrow: #AA544E;
+    --margin-top: 190px;
+    --heroLineSize: 41px;
+    --heroLineFont: 'Times New Roman', Times, serif;
+    --heroLineLineHeight: 45px;
+    --white: #F6EFE9;
+    --heroLeadColor: #C5B3C9;
+    --heroLeadFont: Arial;
+    --heroLeadSize: 14px;
+    --projectsButton: #FD8265, #F5B061;
+    --contactButtonBorder: #FD8265;
+    --headingsFont:  "Fraunces", serif;
+    --aboutBioColor: #C5B3C9;
+    --aboutBioFont: "Public Sans", sans-serif;
+    --aboutBioHeight: 26px;
+    --roleCardBack: #34213C;
+    --roleCardHead: "Fraunces", serif;
+    --roleCardHeadC: #F4B860;
+    --roleCardBody: "Public Sans", sans-serif;
+    --roleCardBodyC: #C5B3C9;
+    --filterChipBack: #2C1C33;
+    --tagsBack: #512D42;
+}
+
+:root[data-mode="ops"] {
+    --bg: #071a1d;
+    --text: #e4fbf5;
+    --accent: #39e1c9;
+    --eyebrow: #29A292;
+    --margin-top: 130px;
+    --heroLineSize: 41px;
+    --heroLineFont: "JetBrains Mono", monospace;
+    --heroLineLineHeight: 47px;
+    --white: #E4FBF5;
+    --heroLeadColor: #7FB8AE;
+    --heroLeadFont: "JetBrains Mono", monospace;
+    --heroLeadSize: 14px;
+    --projectsButton: #50DCB9, #DABD5C;
+    --contactButtonBorder: #185D57;
+    --headingsFont:  "JetBrains Mono", monospace;
+    --aboutBioColor: #7FB8AE;
+    --aboutBioFont: "JetBrains Mono", monospace;
+    --aboutBioHeight: 28px;
+    --roleCardBack: #103038;
+    --roleCardHead: "JetBrains Mono", monospace;
+    --roleCardHeadC: #F2B84B;
+    --roleCardBody: "JetBrains Mono", monospace;
+    --roleCardBodyC: #7FB8AE;
+    --filterChipBack: #0D262A;
+    --tagsBack: #16484C;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: sans-serif;
+    transition: background 400ms ease, color 400ms ease;
+}
+
+/* 
+F6EFE9
+TNR
+40px
+
+
+
+
+*/

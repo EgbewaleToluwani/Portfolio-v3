@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" data-mode="studio">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Egbewale Toluwani</title>
+    <link rel="shortcut icon" href="assets/img/photo_2026-06-14_12-41-26.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <a href="#hero">
+            <div class="logo">
+                < <div class="logo-t"></div><div class="logo-e"><div class="logo-e-line"></div><div class="logo-e-line"></div><div class="logo-e-line"></div></div>>
+            </div>
+        </a>
+        <button id="switchMode">Switch</button>
+    </header>
+
+
+    <section id="hero">
+        <span id="hero-eyebrow" class="eyebrow"></span>
+        <h1 id="hero-line"></h1>
+        <p id="hero-lead"></p>
+        <a href="#projects"><button>See what I've built</button></a>
+        <br>
+        <a href="#contact"><button>Get in touch</button></a>
+    </section>
+
+
+    <section id="about">
+        <span class="eyebrow">ABOUT</span>
+        <h2 class="heading">Who's building this</h2>
+        <p id="about-bio"></p>
+    </section>
+
+
+    <section id="toolbox">
+        <span class="eyebrow">THE TOOLBOX</span>
+        <h2 id="bring-heading" class="heading"></h2>
+        <div id="roles-grid"></div>
+    </section>
+
+
+    <section id="projects">
+        <span class="eyebrow">THINGS I'VE BUILT</span>
+        <h2 class="heading">Selected work</h2>
+        <div class="filter-row">
+            <button class="filter-chip" data-filter="all">All</button>
+            <button class="filter-chip" data-filter="webdev">Web Dev</button>
+            <button class="filter-chip" data-filter="cyber">Cyber</button>
+            <button class="filter-chip" data-filter="others">Others</button>
+        </div>
+        <div id="projects-grid"></div>
+    </section>
+
+
+    <section id="contact">
+        <span class="eyebrow">CONTACT</span>
+        <h2 class="heading">Let's talk</h2>
+        <div id="contact-body">
+            <form action="" method="post">
+                <p>Your name</p>
+                <input type="text" required>
+                <p>Your email</p>
+                <input type="email" name="" id="" required>
+                <p>Message</p>
+                <textarea name="" id=""></textarea>
+                <br>
+                <button type="submit">Send message</button>
+            </form>
+            <div class="links" style="display: flex; flex-direction: column;">
+                <a href="mailto:egbewaletoluwani12@gmail.com">egbewaletoluwani12@gmail.com</a>
+                <a href="https://github.com/EgbewaleToluwani">GitHub</a>
+                <a href="https://www.linkedin.com/in/toluwani-egbewale-62b331400">LinkedIn</a>
+                <a href="https://wa.me/2348104791861">WhatsApp</a>
+                <a href="https://x.com/toluegbewale">Twitter / X</a>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="js/data/projects.js"></script>
+    <script src="js/data/roles.js"></script>
+    <script src="js/data/copy.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

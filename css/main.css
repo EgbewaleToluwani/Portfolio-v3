@@ -1,0 +1,224 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 60px;
+    padding: 0 20px;
+    backdrop-filter: blur(20px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+header a {
+    text-decoration: none;
+    color: #AEA5A7;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-t {
+    margin-left: 3px;
+    background: #58A6FF;
+    height: 20px;
+    width: 20px;
+    clip-path: polygon(10% 0, 100% 0, 90% 20%, 60% 20%, 45% 100%, 25% 100%, 40% 20%, 0 20%);
+}
+
+.logo-e {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-right: 3px;
+}
+
+.logo-e-line {
+    background: #58A6FF;
+    height: 3.5px;
+    width: 20px;
+    clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%);
+}
+
+.logo-e-line:first-of-type {
+    margin-left: 2px;
+}
+
+.logo-e-line:nth-of-type(2) {
+    margin-left: 0px;
+    background: white;
+}
+
+.logo-e-line:last-of-type {
+    margin-left: -3px;
+}
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+    header {
+        font-size: 12px;
+    }
+
+    .logo-t {
+        width: 15px;
+        height: 15px;
+    }
+
+    .logo-e {
+        gap: 3px;
+    }
+
+    .logo-e-line {
+        width: 15px;
+        height: 3px;
+    }
+
+    section {
+        margin-bottom: 155px;
+    }
+
+    #hero {
+        margin-top: var(--margin-top);
+        padding: 0 25px;
+    }
+
+    .eyebrow {
+        color: var(--accent);
+        font-size: 12.6px;
+        font-family: "JetBrains Mono", monospace;
+        letter-spacing: 0.5px;
+    }
+
+    #hero-line {
+        margin: 20px 0;
+        color: var(--white);
+        line-height: var(--heroLineLineHeight);
+        font-size: var(--heroLineSize);
+        font-family: var(--heroLineFont)
+    }
+
+    #hero-lead {
+        color: var(--heroLeadColor);
+        font-size: var(--heroLeadSize);
+        font-family: var(--heroLeadFont);
+        line-height: 23px;
+    }
+
+    #hero button  {
+        padding: 15px 20px;
+        border-radius: 25px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 14px;
+    }
+
+    #hero a:first-of-type button {
+        background: linear-gradient(90deg, var(--projectsButton));
+        border: none;
+        margin: 20px 0 10px;
+    }
+
+    #hero a:last-of-type button {
+        border: 2px solid var(--contactButtonBorder);
+        color: var(--white);
+        background: transparent;
+    }
+
+    .heading {
+        font-family: var(--headingsFont);
+        font-size: 30px;
+        margin: 10px 0 35px;
+        color: var(--white);
+    }
+
+    #about-bio {
+        color: var(--aboutBioColor);
+        font-family: var(--aboutBioFont);
+        line-height: var(--aboutBioHeight);
+    }
+
+    .role-card {
+        background: var(--roleCardBack);
+        margin-bottom: 20px;
+        padding: 20px 25px;
+        border-radius: 20px;
+    }
+
+    .role-card h2 {
+        color: var(--roleCardHeadC);
+        font-size: 22px;
+        font-family: var(--roleCardHead);
+        margin-bottom: 10px;
+    }
+
+    .role-card p {
+        font-size: 14px;
+        font-family: var(--roleCardBody);
+        color: var(--roleCardBodyC);
+        line-height: 20px;
+    }
+
+    .filter-chip {
+        padding: 8px 12px;
+        border-radius: 25px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 14px;
+        margin-bottom: 20px;
+        background: var(--filterChipBack);
+        border: none;
+        color: var(--roleCardBodyC);
+    }
+
+    .active {
+        background: linear-gradient(90deg, var(--projectsButton));
+        color: black;
+    }
+
+    .project-card {
+        background: var(--roleCardBack);
+        margin-bottom: 20px;
+        padding: 20px 25px;
+        border-radius: 20px;
+    }
+
+    .project-card h3 {
+        color: var(--white);
+        font-family: var(--roleCardHead);
+        font-size: 22px;
+    }
+
+    .project-card p {
+        color: var(--roleCardBodyC);
+        font-family: var(--aboutBioFont);
+        font-size: 14px;
+        margin: 10px 0 15px;
+    }
+
+    .project-card span {
+        margin-right: 5px;
+        line-height: 35px;
+        color: var(--accent);
+        background: var(--tagsBack);
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 14px;
+    }
+}
