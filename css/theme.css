@@ -2,6 +2,7 @@
     --bg: #211527;
     --text: #f6efe9;
     --accent: #ff7a66;
+    --navborder: #774c8d90;
     --eyebrow: #FF7A66;
     --margin-top: 190px;
     --largeMargin-top: 290px;
@@ -31,12 +32,16 @@
     --cardBorder: #4A3352;
     --cardGlow: 0 8px 30px -8px rgba(255, 122, 102, 0.35);
     --switchGlow: 0 0 12px rgba(255, 122, 102, 0.45);
+    --blob1: #ff7a66;
+    --blob2: #b98cf0;
+    --blob3: #f4b860;
 }
 
 :root[data-mode="ops"] {
     --bg: #071a1d;
     --text: #e4fbf5;
     --accent: #39e1c9;
+    --navBorder: #39e1c826;
     --eyebrow: #39E1C9;
     --margin-top: 130px;
     --largeMargin-top: 230px;
@@ -66,6 +71,8 @@
     --cardBorder: #1C4A4A;
     --cardGlow: 0 8px 30px -8px rgba(57, 225, 201, 0.35);
     --switchGlow: 0 0 12px rgba(57, 225, 201, 0.45);
+    --gridLine: #1c4a4a;
+    --scanColor: #39e1c9;
 }
 
 body {
