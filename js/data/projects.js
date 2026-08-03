@@ -8,7 +8,10 @@ const PROJECTS = [
         tags: [
             "bash", "cli", "security", "osint"
         ],
-        video: null
+        link: {
+            demo: "",
+            github: "https://github.com/EgbewaleToluwani/Kali/tree/main/Domain%20Exposure%20Audit"  
+        }
     },
 
     {
@@ -20,7 +23,10 @@ const PROJECTS = [
         tags: [
             "html", "css", "responsive", "ui-design"
         ],
-        video: null
+        link: {
+            demo: "http://dalians-cafe.vercel.app/",
+            github: "https://github.com/EgbewaleToluwani/Dalians-Cafe"
+        }
     },
 
     {
@@ -32,7 +38,10 @@ const PROJECTS = [
         tags: [
             "html", "css", "responsive", "ui-design", "branding"
         ],
-        video: null
+        link: {
+            demo: "https://kohi-nine.vercel.app/kohi.html",
+            github: "https://github.com/EgbewaleToluwani/Kohi"
+        }
     },
 
     {
@@ -44,7 +53,10 @@ const PROJECTS = [
         tags: [
             "html", "css", "javascript", "ui-design", "responsive"
         ],
-        video: null
+        link: {
+            demo: "http://egbewaletoluwani-portfolio.vercel.app/",
+            github: "https://github.com/EgbewaleToluwani/Portfolio-v2"
+        }
     },
 
     {
@@ -56,7 +68,10 @@ const PROJECTS = [
         tags: [
             "html", "css", "responsive", "ui-design", "semantic-html"
         ],
-        video: null
+        link:  {
+            demo: "http://theplacecollective.vercel.app/",
+            github: "https://github.com/EgbewaleToluwani/The-Place-Collective"
+        }
     },
 
     {
@@ -68,7 +83,10 @@ const PROJECTS = [
         tags: [
             "bash", "cli", "security"
         ],
-        video: null
+        link: {
+            demo: "",
+            github: "https://github.com/EgbewaleToluwani/Kali/tree/main"
+        }
     },
 
     {
@@ -80,7 +98,10 @@ const PROJECTS = [
         tags: [
             "bash", "cli", "security"
         ],
-        video: null
+        link: {
+            demo: "",
+            github: "https://github.com/EgbewaleToluwani/Kali/tree/main"
+        }
     },
 
     {
@@ -92,7 +113,9 @@ const PROJECTS = [
         tags: [
             "kali-linux", "vmware", "lab-environment"
         ],
-        video: null
+        link: {
+            
+        }
     }
 ]
 

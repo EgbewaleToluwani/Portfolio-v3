@@ -22,6 +22,8 @@
         <span class="scan-line"></span>
     </div>
 
+    <div class="mode-transition" id="mode-transition"></div>
+
     <header>
         <a href="#hero">
             <div class="logo">
@@ -46,21 +48,21 @@
     </section>
 
 
-    <section id="about">
+    <section id="about" data-reveal>
         <span class="eyebrow">ABOUT</span>
         <h2 class="heading">Who's building this</h2>
         <p id="about-bio"></p>
     </section>
 
 
-    <section id="toolbox">
+    <section id="toolbox" data-reveal>
         <span class="eyebrow">THE TOOLBOX</span>
         <h2 id="bring-heading" class="heading"></h2>
-        <div id="roles-grid"></div>
+        <div id="roles-grid" data-reveal></div>
     </section>
 
 
-    <section id="projects">
+    <section id="projects" data-reveal>
         <span class="eyebrow">THINGS I'VE BUILT</span>
         <h2 class="heading">Selected work</h2>
         <div class="filter-row">
@@ -73,19 +75,20 @@
     </section>
 
 
-    <section id="contact">
+    <section id="contact" data-reveal>
         <span class="eyebrow">CONTACT</span>
         <h2 class="heading">Let's talk</h2>
         <div id="contact-body">
-            <form action="" method="post">
+            <form id="form">
                 <p>Your name</p>
-                <input type="text" required>
+                <input type="text" name="name" required>
                 <p>Your email</p>
-                <input type="email" name="" id="" required>
+                <input type="email" name="email" id="" required>
                 <p>Message</p>
-                <textarea name="" id="" required></textarea>
+                <textarea name="message" id="" required></textarea>
                 <br>
-                <button type="submit">Send message</button>
+                <button id="submitFormButton" type="submit">Send message</button>
+                <p id="formSent"></p>
             </form>
             <div class="links" style="display: flex; flex-direction: column;">
                 <a href="mailto:egbewaletoluwani12@gmail.com">egbewaletoluwani12@gmail.com</a>

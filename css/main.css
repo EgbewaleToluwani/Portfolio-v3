@@ -75,6 +75,7 @@ body {
     top: 0;
     width: 100%;
     height: 70%;
+    mask-image: radial-gradient(ellipse 100% 50% at 50% 55%, black 40%, transparent 100%);
 }
 
 :root[data-mode="ops"] .bg-decor .scan-line {
@@ -96,6 +97,8 @@ body {
         top: 105%;
     }
 }
+
+
 
 /* -------------------- header / logo -------------------- */
 header {
@@ -191,10 +194,6 @@ section {
     z-index: 1;
 }
 
-#hero {
-    margin-bottom: 130px;
-}
-
 .eyebrow {
     display: block;
     color: var(--eyebrow);
@@ -214,6 +213,7 @@ section {
 /* -------------------- hero -------------------- */
 #hero {
     margin-top: var(--margin-top);
+    margin-bottom: 130px;
     padding: 0 25px;
 }
 
@@ -368,7 +368,7 @@ section {
     margin: 10px 0 15px;
 }
 
-.project-card > div {
+.projectTags{
     display: flex;
     flex-wrap: wrap;
     gap: 5px;
@@ -381,6 +381,22 @@ section {
     padding: 0px 10px;
     border-radius: 20px;
     font-size: 14px;
+}
+
+.projectLinks {
+    margin-top: 15px;
+}
+
+.projectLinks a {
+    background: linear-gradient(90deg, var(--projectsButton));
+    border: none;
+    padding: 7px 10px;
+    border-radius: 25px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    cursor: pointer;
+    color: #1C1A18;
+    text-decoration: none;
 }
 
 /* -------------------- contact -------------------- */
@@ -431,6 +447,7 @@ form button {
     font-family: "JetBrains Mono", monospace;
     font-size: 14px;
     cursor: pointer;
+    margin-bottom: 10px;
 }
 
 form button:hover {
@@ -463,6 +480,18 @@ footer {
     padding-bottom: 25px;
     position: relative;
     z-index: 1;
+}
+
+/* -------------------- fade in -------------------- */
+[data-reveal] {
+    opacity: 0;
+    transform: translateY(200px);
+    transition: opacity 600ms ease, transform 800ms ease;
+}
+
+[data-reveal].revealed {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* -------------------- larger screens -------------------- */
@@ -519,10 +548,6 @@ footer {
         grid-template-columns: repeat(3, 1fr); 
     }
 
-    .role-card {
-        
-    }
-
     .role-card h2 {
         font-size: 22px;
         margin-bottom: 15px;
@@ -550,5 +575,17 @@ footer {
         font-size: 15px;
         margin: 15px 0 20px;
         min-height: 70px;
+    }
+
+    .projectTags {
+        min-height: 75px;
+    }
+
+    .project-card div span {
+        height: fit-content;
+    }
+
+    .projectLinks a {
+        height: fit-content;
     }
 }
