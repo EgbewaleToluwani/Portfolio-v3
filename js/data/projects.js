@@ -55,7 +55,7 @@ const PROJECTS = [
         ],
         link: {
             demo: "http://egbewaletoluwani-portfolio.vercel.app/",
-            github: "https://github.com/EgbewaleToluwani/Portfolio-v2"
+            github: "https://github.com/EgbewaleToluwani/Portfolio-v3"
         }
     },
 
@@ -114,7 +114,7 @@ const PROJECTS = [
             "kali-linux", "vmware", "lab-environment"
         ],
         link: {
-            
+
         }
     }
 ]

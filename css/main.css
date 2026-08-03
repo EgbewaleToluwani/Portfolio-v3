@@ -115,9 +115,10 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    color: #AEA5A7;
 }
 
-header a { text-decoration: none; color: #AEA5A7; }
+header a { text-decoration: none;  }
 
 .logo { display: flex; align-items: center; }
 
