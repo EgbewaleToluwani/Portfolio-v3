@@ -1,6 +1,7 @@
 const PROJECTS = [
     {
         id: "domain-exposure-audit",
+        image: "../../assets/img/dae.png",
         name: "Domain Exposure Audit",
         category: "cyber",
         tagline: "See your domain the way an attacker would — before they do.",
@@ -16,6 +17,7 @@ const PROJECTS = [
 
     {
         id: "dalians-cafe",
+        image: "../../assets/img/dalians.png",
         name: "Dalian's Cafe",
         category: "webdev",
         tagline: "An unsolicited redesign of a Downtown LA coffee shop.",
@@ -31,6 +33,7 @@ const PROJECTS = [
 
     {
         id: "kohi-coffee-brand",
+        image: "../../assets/img/kohi.png",
         name: "Kōhī Coffee Brand",
         category: "webdev",
         tagline: "A full brand identity for a fictional specialty coffee house.",
@@ -46,6 +49,7 @@ const PROJECTS = [
 
     {
         id: "portfolio-website",
+        image: "../../assets/img/portfolio.png",
         name: "Portfolio Website",
         category: "webdev",
         tagline: "This site. Two personas, one build.",
@@ -61,6 +65,7 @@ const PROJECTS = [
 
     {
         id: "responsive-landing-page",
+        image: "../../assets/img/landing.png",
         name: "Responsive Landing Page",
         category: "webdev",
         tagline: "Layout discipline, stripped of decoration.",
@@ -76,6 +81,7 @@ const PROJECTS = [
 
     {
         id: "file-encryption-tool",
+        image: "../../assets/img/compress.png",
         name: "File Encryption Tool",
         category: "cyber",
         tagline: "Compression in different formats, no GUI required.",
@@ -91,6 +97,7 @@ const PROJECTS = [
 
     {
         id: "file-decompressor",
+        image: "../../assets/img/compress.png",
         name: "File Decompressor",
         category: "cyber",
         tagline: "The encryption tool's counterpart — format-agnostic, on purpose.",
@@ -106,6 +113,7 @@ const PROJECTS = [
 
     {
         id: "kali-vm-environment",
+        image: "../../assets/img/kali.png",
         name: "Kali Linux VM Environment",
         category: "others",
         tagline: "A hands-on lab, built and troubleshot from scratch.",

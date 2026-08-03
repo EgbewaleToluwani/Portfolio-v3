@@ -50,7 +50,10 @@ const renderProjects=()=> {
         const githubButton = element.link.github
             ? `<a target="_blank" href="${element.link.github}">Github</a>`
             : "";
-        projectCard.innerHTML=`<h3>${element.name}</h3><p>${element.tagline}</p><div class="projectTags">${element.tags.map((tag)=> `<span>#${tag} </span>`).join("")}</div><div class="projectLinks" style="display: flex; gap: 10px; justify-content: right;">${demoButton} ${githubButton}</div>`
+        const imagePreview = element.image
+            ? `<img class="image-preview" src="${element.image}" alt="">`
+            : "";
+        projectCard.innerHTML=`<div class="projectImage">${imagePreview}</div><h3>${element.name}</h3><p>${element.tagline}</p><div class="projectTags">${element.tags.map((tag)=> `<span>#${tag} </span>`).join("")}</div><div class="projectLinks" style="display: flex; gap: 10px; justify-content: right;">${demoButton} ${githubButton}</div>`
         grid.appendChild(projectCard)
         observer.observe(projectCard)
     })
