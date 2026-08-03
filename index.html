@@ -25,11 +25,9 @@
     <div class="mode-transition" id="mode-transition"></div>
 
     <header>
-        <!-- <a href="#hero"> -->
             <div id="logo" class="logo">
                 < <div class="logo-t"></div><div class="logo-e"><div class="logo-e-line"></div><div class="logo-e-line"></div><div class="logo-e-line"></div></div>>
             </div>
-        <!-- </a> -->
         <div class="mode-toggle">
             <span id="mode-label">studio</span>
             <button id="switchMode"></button>
@@ -51,7 +49,7 @@
     <section id="about" data-reveal>
         <span class="eyebrow">ABOUT</span>
         <h2 class="heading">Who's building this</h2>
-        <p id="about-bio"></p>
+        <p id="about-bio" data-reveal></p>
     </section>
 
 
@@ -78,13 +76,14 @@
     <section id="contact" data-reveal>
         <span class="eyebrow">CONTACT</span>
         <h2 class="heading">Let's talk</h2>
+        <p>Have a project in mind? Let's work together!</p>
         <div id="contact-body">
             <form id="form">
                 <p>Your name</p>
                 <input type="text" name="name" required>
                 <p>Your email</p>
                 <input type="email" name="email" id="" required>
-                <p>Message</p>
+                <p>Project Description</p>
                 <textarea name="message" id="" required></textarea>
                 <br>
                 <button id="submitFormButton" type="submit">Send message</button>

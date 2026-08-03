@@ -99,7 +99,6 @@ body {
 }
 
 
-
 /* -------------------- header / logo -------------------- */
 header {
     position: fixed;
@@ -117,8 +116,6 @@ header {
     justify-content: space-between;
     color: #AEA5A7;
 }
-
-header a { text-decoration: none;  }
 
 .logo { display: flex; align-items: center; }
 
@@ -401,6 +398,18 @@ section {
 }
 
 /* -------------------- contact -------------------- */
+#contact h2 {
+    margin-bottom: 0;
+}
+
+#contact > p {
+    font-family: var(--contactP);
+    color: var(--white);
+    font-size: 14px;
+    margin: 5px 0px 20px;
+}
+
+
 form { display: flex; flex-direction: column; }
 
 form p {
