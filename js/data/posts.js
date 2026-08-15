@@ -56,9 +56,9 @@ const POSTS = [
        id: "portfolio-v3-blog-build-process",
       title: "Building My Portfolio's Blog Section — And Actually Understanding Every Line",
       date: "2026-08-15",
-      excerpt: "Adding a data-driven blog and CV section to Portfolio v3, and choosing to slow down and learn the architecture properly instead of just copying working code.",
+      excerpt: "Adding a data-driven blog to Portfolio v3, and choosing to slow down and learn the architecture properly instead of just copying working code.",
       body: `
-    <p>I spent this session adding a blog section and downloadable CV to Portfolio v3 — but the more interesting part wasn't what got built, it was how I built it.</p>
+    <p>I spent this session adding a blog section to Portfolio v3 — but the more interesting part wasn't what got built, it was how I built it.</p>
 
     <h2>The Decision That Shaped Everything</h2>
     <p>I didn't want a blog where publishing a new post meant creating a new HTML file every time. That doesn't scale, and it doesn't match how the rest of my site already works — my projects section is already data-driven, pulling from a single <code>PROJECTS</code> array instead of being hardcoded into the page. The blog needed to follow that same pattern: one reusable page template, and a data file that holds every post as an object inside an array.</p>
