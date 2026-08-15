@@ -54,7 +54,7 @@ const POSTS = [
 
     {
        id: "portfolio-v3-blog-build-process",
-      title: "Rebuilding My Portfolio's Blog Section — And Actually Understanding Every Line",
+      title: "Building My Portfolio's Blog Section — And Actually Understanding Every Line",
       date: "2026-08-15",
       excerpt: "Adding a data-driven blog and CV section to Portfolio v3, and choosing to slow down and learn the architecture properly instead of just copying working code.",
       body: `
