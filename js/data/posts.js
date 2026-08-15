@@ -49,6 +49,7 @@ const POSTS = [
     <p>An incident report that's unclear can slow down a response by hours. An audit finding that isn't formatted consistently can get missed by a stakeholder skimming a 40-page report. A security assessment that reads well is one that actually gets acted on — one that doesn't is often filed away and ignored, no matter how good the findings inside it are. Professional templates exist to make sure critical information survives the handoff between the person who found it and the person who has to act on it.</p>
 
     <p>Certificate #1 from MCSI is down. More writeups on this program to come as I move through it.</p>
+    <p><img class="post-image" src="assets/blog/img/mcsi-1.png" alt="MCSI Certificate"></p>
   `
     },
 
@@ -56,9 +57,9 @@ const POSTS = [
        id: "portfolio-v3-blog-build-process",
       title: "Building My Portfolio's Blog Section — And Actually Understanding Every Line",
       date: "2026-08-15",
-      excerpt: "Adding a data-driven blog to Portfolio v3, and choosing to slow down and learn the architecture properly instead of just copying working code.",
+      excerpt: "Adding a data-driven blog and CV section to Portfolio v3, and choosing to slow down and learn the architecture properly instead of just copying working code.",
       body: `
-    <p>I spent this session adding a blog section to Portfolio v3 — but the more interesting part wasn't what got built, it was how I built it.</p>
+    <p>I spent this session adding a blog section and downloadable CV to Portfolio v3 — but the more interesting part wasn't what got built, it was how I built it.</p>
 
     <h2>The Decision That Shaped Everything</h2>
     <p>I didn't want a blog where publishing a new post meant creating a new HTML file every time. That doesn't scale, and it doesn't match how the rest of my site already works — my projects section is already data-driven, pulling from a single <code>PROJECTS</code> array instead of being hardcoded into the page. The blog needed to follow that same pattern: one reusable page template, and a data file that holds every post as an object inside an array.</p>
@@ -97,8 +98,8 @@ const POSTS = [
       <li>Designing output that's honest by default — distinguishing "no email exposed" from "an email exists, but it's just a contact-form placeholder," instead of flattening both into one misleading result.</li>
     </ul>
 
-    <p>Built entirely in vanilla bash — curl, jq, grep, sed — and a lot of tracing through exactly what each line does before trusting it with real domains.</p>
-    <p id="link-to-git"><a href="https://github.com/EgbewaleToluwani/Social-Engineering-Demonstration/blob/main/Human%20Layer%20Assessment.md" target="_blank">Read the full technical writeup on GitHub →</a></p>
+    <p>Built entirely in bash — curl, jq, grep, sed — and a lot of tracing through exactly what each line does before trusting it with real domains.</p>
+    <p id="link-to-git"><a href="https://github.com/EgbewaleToluwani/Kali/blob/main/Domain%20Exposure%20Audit/domain-exposure-audit.sh" target="_blank">Check out the script on GitHub →</a></p>
   `
     },
 
@@ -117,6 +118,9 @@ const POSTS = [
 
     <h2>Why Labs, Not Just Theory</h2>
     <p>Reading about a vulnerability class and actually exploiting one in a controlled lab are very different experiences. The labs force you to think the way an attacker actually thinks — testing assumptions, chaining small findings together, and learning exactly where an application's input validation breaks down in practice, not just in principle.</p>
+    <p><img class="post-image" src="assets/blog/img/ssrf.png" alt="SSRF"></p>
+    <p><img class="post-image" src="assets/blog/img/pt.png" alt="Path Traversal"></p>
+    <p><img class="post-image" src="assets/blog/img/portswigger-progress.png" alt="PortSwigger Progress"></p>
   `
     },
 
@@ -141,10 +145,11 @@ const POSTS = [
       <li>A warm espresso-and-gold visual identity, built with Cormorant Garamond and Jost, aimed at feeling like a European café rather than a generic template site</li>
     </ul>
 
-    <p>Pure HTML and CSS. No frameworks. Deployed and live at <a href="http://dalians-cafe.vercel.app/" target="_blank">dalians-cafe.vercel.app</a>.</p>
+    <p>Pure HTML and CSS. No frameworks.</p>
 
     <h2>Why I Do This</h2>
     <p>This is what I look for: businesses whose digital presence doesn't match the quality of what they actually offer. Dalian's had the harder part — a real product, a real story — already figured out. The website just wasn't carrying its weight.</p>
+    <p><a href="https://dalians-cafe.vercel.app/" target="_blank">View the live site →</a></p>
   `
   },
 
@@ -167,6 +172,7 @@ const POSTS = [
     <p>This wasn't just "write a script that works." It was a genuine exercise in Bash scripting and automation, file compression and archiving formats, handling and validating user input properly, and structuring conditional logic and control flow cleanly enough that the script doesn't silently do the wrong thing on bad input.</p>
 
     <p>A solid, hands-on push into Linux fundamentals and shell scripting — and a deliberate first half of a two-part project. The decryption tool, built to restore anything compressed in these formats, came next.</p>
+    <p id="link-to-git"><a href="https://github.com/EgbewaleToluwani/Kali/blob/main/File-Encryption.sh" target="_blank">Check out the script on GitHub →</a></p>
   `
   },
 
@@ -188,6 +194,7 @@ const POSTS = [
     </ul>
 
     <p>The encryption project taught me how to protect data. This one taught me how to read it back out — and how much you have to trust the actual content of a file over what its name claims it to be.</p>
+    <p id="link-to-git"><a href="https://github.com/EgbewaleToluwani/Kali/blob/main/File-Decryption.sh" target="_blank">Check out the script on GitHub →</a></p>
   `
   }
 ]
