@@ -1,0 +1,54 @@
+#post {
+    margin-top: 100px;
+    padding: 0 25px;
+}
+
+#page-not-found {
+    margin-bottom: 50px;
+}
+
+#page-not-found h2 {
+    font-family: var(--heroLineFont);
+    margin-bottom: 10px;
+}
+
+#page-not-found p {
+    font-family: var(--heroLeadFont);
+}
+
+#post a {
+    text-decoration: none;
+    color: var(--accent);
+    font-family: "JetBrains Mono", monospace;
+}
+
+#post-title {
+    margin: 20px 0 10px;
+    font-family: var(--heroLineFont);
+    color: var(--white);
+}
+
+#post-date {
+    color: var(--accent);
+    display: flex;
+    justify-self: end;
+    margin-bottom: 10px;
+    font-family: "JetBrains Mono", monospace;
+}
+
+#post-body p, li {
+    margin: 15px 0;
+    color: var(--aboutBioColor);
+    font-family: var(--aboutBioFont);
+    line-height: var(--aboutBioHeight);
+}
+
+#post-body li {
+    margin-left: 20px;
+}
+
+#post-body h2 {
+    font-family: var(--headingsFont);
+    margin-top: 50px;
+    color: var(--white);
+}

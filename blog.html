@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" data-mode="studio">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Egbewale Toluwani</title>
+    <link rel="shortcut icon" href="assets/img/photo_2026-06-14_12-41-26.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/blog.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="bg-decor" aria-hidden="true">
+        <span class="blob blob-1"></span>
+        <span class="blob blob-2"></span>
+        <span class="blob blob-3"></span>
+        <span class="grid-overlay"></span>
+        <span class="scan-line"></span>
+    </div>
+
+    <header>
+        <a href="index.html">
+            <div id="logo" class="logo">
+                    &lt; <div class="logo-t"></div><div class="logo-e"><div class="logo-e-line"></div><div class="logo-e-line"></div><div class="logo-e-line"></div></div>&gt;
+                </div>
+        </a>
+    </header>
+
+    <section id="blog-hero">
+        <span class="eyebrow">FIELD NOTES</span>
+        <h1 class="heading">Blog</h1>
+        <p>This is where I document the actual process — the frontend builds, the security research, the things that worked and the things that didn't on the first try. It's less curated than the projects section, and that's the point.</p>
+    </section>
+
+
+    <section id="blog-list">
+        <div class="filter-row">
+            <button class="filter-chip" data-filter="newest">Newest</button>
+            <button class="filter-chip" data-filter="oldest">Oldest</button>
+        </div>
+
+        <div id="posts-grid"></div>
+    </section>
+    
+     <footer class="site-footer">© Toluwani Egbewale — built by hand, not by template</footer>
+
+  <script src="js/data/posts.js"></script>
+  <script src="js/blog.js"></script>
+</body>
+</html>

@@ -153,6 +153,13 @@ header {
     gap: 10px;
 }
 
+.mode-toggle a {
+    text-decoration: none;
+    color: var(--accent);
+    font-family: "JetBrains Mono", monospace;
+    margin-right: 10px;
+}
+
 #switchMode {
     position: relative;
     width: 48px;
