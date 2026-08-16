@@ -196,6 +196,27 @@ const POSTS = [
     <p>The encryption project taught me how to protect data. This one taught me how to read it back out — and how much you have to trust the actual content of a file over what its name claims it to be.</p>
     <p id="link-to-git"><a href="https://github.com/EgbewaleToluwani/Kali/blob/main/File-Decryption.sh" target="_blank">Check out the script on GitHub →</a></p>
   `
+  },
+
+  {
+  id: "mcsi-second-certificate-screen-recording-setup",
+  title: "Second Certificate Down: Setting Up for Screen Recording in MCSI's MICS Program",
+  date: "2026-08-16",
+  excerpt: "Configuring a proper screen recording setup as part of MCSI's Introduction to Cyber Security course — a small exercise with a bigger point behind it.",
+  body: `
+    <p>I completed the second exercise in MCSI's Introduction to Cyber Security course, part of the MICS program. This one wasn't about a technical exploit or a vulnerability class — it was about setting up my PC properly for screen recording, and producing a professional video submission.</p>
+
+    <h2>Why This Is Actually a Cybersecurity Skill</h2>
+    <p>It's easy to assume screen recording is just a logistics step, but in this field it's closer to a core competency than it looks. Being able to clearly document and demonstrate an exploit, a lab walkthrough, or a finding is often what separates a report that gets acted on from one that gets skimmed and shelved. A screen recording is frequently the artifact that actually proves a skill was performed, not just claimed.</p>
+
+    <p>The exercise itself was straightforward: research and set up free screen recording software — options like TinyTake or OBS (Open Broadcaster Software) — and produce a clean recording under MCSI's required time limit, which meant getting comfortable with a pause feature to keep submissions concise and professional.</p>
+
+    <h2>What It's Actually For</h2>
+    <p>Beyond the exercise itself, this sets up something I'll be relying on repeatedly going forward: building a library of recorded artifacts for my cybersecurity portfolio, and giving MCSI instructors something concrete to review and give accurate feedback on — rather than just a written description of what I did.</p>
+
+    <p>Certificate #2 from MCSI down. Small exercise, but one that quietly underpins a lot of what comes next in this program.</p>
+    <p><img class="post-image" src="assets/blog/img/mcsi-2.png" alt="MCSI Certificate"></p>
+  `
   }
 ]
 
