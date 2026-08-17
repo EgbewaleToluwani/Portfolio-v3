@@ -217,6 +217,51 @@ const POSTS = [
     <p>Certificate #2 from MCSI down. Small exercise, but one that quietly underpins a lot of what comes next in this program.</p>
     <p><img class="post-image" src="assets/blog/img/mcsi-2.png" alt="MCSI Certificate"></p>
   `
+  },
+
+  {
+    id: "mcsi-ai-assisted-professional-writing",
+    title: "Using AI to Sharpen Professional Writing — MCSI MICS Exercise",
+    category: "cyber",
+    date: "2026-08-17",
+    excerpt: "Another MCSI exercise completed — this one on using AI tools to improve grammar, tone, and clarity in professional writing, and why that skill matters more in cybersecurity than it first appears.",
+    body: `
+      <p>Completed another exercise in MCSI's MICS program, this one focused on something that doesn't look technical at first glance: using AI tools to polish professional writing.</p>
+
+      <h2>Why This Belongs in a Cybersecurity Course</h2>
+      <p>It's tempting to file this under "soft skill" and move on, but clear writing is genuinely load-bearing in this field. An incident report that's vague or poorly structured can slow down a response, get misread by a stakeholder, or simply get ignored. A well-written report with the exact same findings tends to get acted on. The content isn't what changes — the clarity does.</p>
+
+      <p>The exercise itself involved using an AI writing tool — options like ChatGPT, OpenAI Playground, or similar platforms — to review a piece of text and improve its grammar, tone, and overall professionalism. The actual skill being tested wasn't "can AI fix your writing" — it was learning to identify what's actually wrong with a piece of writing in the first place, and using AI as a tool to correct it deliberately, rather than blindly accepting whatever it suggests.</p>
+
+      <h2>The Practical Takeaway</h2>
+      <p>Client emails, security assessments, audit findings, incident reports — all of it depends on the reader trusting that the person who wrote it knows what they're talking about. Sloppy writing undermines that trust before the content even gets evaluated. A small exercise, but a real one.</p>
+      <p><img class="post-image" src="assets/blog/img/mcsi-3.png" alt="MCSI Certificate"></p>
+    `
+  },
+
+  {
+    id: "cybersecurity-recon-fundamentals",
+    title: "Starting Reconnaissance — Username, Phone, Email, and Subdomain Recon",
+    category: "cyber",
+    date: "2026-08-17",
+    excerpt: "An introduction to reconnaissance — the information-gathering stage that comes before any real attack — covering username, phone number, email, and subdomain recon.",
+    body: `
+      <p>Started learning reconnaissance today — commonly shortened to "recon" — which is the very first stage of how most real attacks actually begin, long before anything resembling hacking takes place.</p>
+
+      <h2>What Recon Actually Is</h2>
+      <p>Recon is the process of gathering information about a target before attempting anything against it. None of it involves breaking into systems — it's built almost entirely on publicly available information. That's exactly what makes it worth understanding from a defensive angle: if information is sitting in the open, an attacker doesn't need to be skilled to find it, they just need to know where to look.</p>
+
+      <h2>The Four Types I Covered</h2>
+      <ul>
+        <li><strong>Username recon</strong> — tracing the same username across multiple platforms to map out someone's digital footprint. People frequently reuse usernames across accounts without realizing how much that connects otherwise-separate parts of their online presence.</li>
+        <li><strong>Phone number recon</strong> — pulling associated information from a phone number, such as carrier details, general location, and linked accounts.</li>
+        <li><strong>Email recon</strong> — checking whether an email address has appeared in a prior data breach, and identifying what other accounts or services it's tied to.</li>
+        <li><strong>Subdomain recon</strong> — mapping out the full extent of a company's web presence, including subdomains that were forgotten about or never meant to be publicly discoverable.</li>
+      </ul>
+
+      <h2>Why This Matters for Defense</h2>
+      <p>Understanding recon isn't about learning to attack — it's about understanding what an attacker sees before they ever make a move, so that exposure can be closed off in advance. This is the same thinking behind projects I've built before, like domain-exposure-audit.sh — seeing your own footprint the way an attacker would, before they get the chance to use it.</p>
+    `
   }
 ]
 
