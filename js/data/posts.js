@@ -280,6 +280,28 @@ const POSTS = [
       <p><img class="post-image" src="assets/blog/img/mcsi-3.png" alt="MCSI Certificate"></p>
     `
   },
+
+  {
+    id: "recon-day2-setoolkit-website-attack-vectors",
+    title: "Recon, Continued — Exploring SEToolkit and the Credential Harvester Attack Vector",
+    date: "2026-08-18",
+    excerpt: "Day 2 of learning reconnaissance: an introduction to the Social-Engineering Toolkit (SEToolkit), its website attack vector module, and how credential harvesting attacks actually work.",
+    body: `
+      <p>Continuing on from reconnaissance, today's focus shifted to a new tool: SEToolkit — the Social-Engineering Toolkit — specifically its website attack vectors and the credential harvester module.</p>
+
+      <h2>What SEToolkit Is</h2>
+      <p>SEToolkit is an open-source framework built around social engineering attack simulations — the human-manipulation side of security, rather than purely technical exploits. It's widely used in authorized penetration testing and security awareness training to demonstrate, in a controlled setting, how easily people can be tricked into handing over sensitive information.</p>
+
+      <h2>Website Attack Vectors, Conceptually</h2>
+      <p>One of its core modules focuses on website-based attacks — essentially, cloning the look of a legitimate website to trick a target into believing they're on the real thing. The credential harvester specifically refers to a page designed to capture whatever a victim types into it, most commonly a username and password, at the exact moment they believe they're logging into a genuine service.</p>
+
+      <p>The mechanics matter less here than the underlying lesson: a login page's visual legitimacy says nothing about its actual legitimacy. Anyone can replicate a familiar interface convincingly. The only real defenses are things like checking the actual URL and domain carefully, using a password manager (which won't autofill credentials on a spoofed domain), and enabling multi-factor authentication so a stolen password alone isn't enough to compromise an account.</p>
+
+      <h2>Why This Matters for Defense</h2>
+      <p>Understanding how credential harvesting attacks are built is what makes it possible to actually recognize and defend against them — the same principle behind the recon work from Day 1. Attacks like this succeed on convincing appearance and misplaced trust, not technical sophistication, which is exactly why awareness of the mechanism is itself a meaningful defense.</p>
+      <p><img class="post-image" src="assets/blog/img/set.png" alt="SEToolkit"></p>
+    `
+  }
 ]
 
 window.POSTS = POSTS
