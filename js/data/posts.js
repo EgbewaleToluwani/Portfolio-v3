@@ -301,6 +301,36 @@ const POSTS = [
       <p>Understanding how credential harvesting attacks are built is what makes it possible to actually recognize and defend against them — the same principle behind the recon work from Day 1. Attacks like this succeed on convincing appearance and misplaced trust, not technical sophistication, which is exactly why awareness of the mechanism is itself a meaningful defense.</p>
       <p><img class="post-image" src="assets/blog/img/set.png" alt="SEToolkit"></p>
     `
+  },
+
+  {
+    id: "access-control-privilege-escalation",
+    title: "Access Control Vulnerabilities and Privilege Escalation",
+    date: "2026-08-19",
+    excerpt: "Covering access control fundamentals and privilege escalation on PortSwigger's Web Security Academy, and solving four labs on unprotected admin functionality and parameter-based access control.",
+    body: `
+      <p>Today's focus was access control — specifically, how it breaks, and what privilege escalation actually looks like in practice. Worked through the theory on PortSwigger's Web Security Academy and solved four labs to go with it.</p>
+
+      <h2>What Access Control Actually Means</h2>
+      <p>Access control depends on two things working correctly together: authentication (confirming a user is who they claim to be) and session management (tracking that it's still the same user on subsequent requests). Access control itself is the layer on top of both — deciding whether that authenticated user is actually allowed to do the specific thing they're attempting. When any one of these three pieces is designed poorly, the whole chain can fail, sometimes without anything looking obviously broken on the surface.</p>
+
+      <h2>Vertical vs Horizontal Access Control</h2>
+      <p><strong>Vertical access controls</strong> restrict entire categories of functionality to certain user types — an admin can delete accounts, an ordinary user can't. <strong>Horizontal access controls</strong> restrict access to a subset of resources of the same type — you can see your own bank transactions, not someone else's. Both fail in different ways, but the underlying cause is often the same: the application assumes a user won't attempt something outside their intended role, instead of actually verifying it every time.</p>
+
+      <h2>Vertical Privilege Escalation, In Practice</h2>
+      <p>Vertical privilege escalation happens when a user reaches functionality they were never meant to access — most simply, when sensitive pages are only hidden from the interface rather than actually protected. If an admin page just isn't linked anywhere for regular users, but the URL itself has no real access check behind it, anyone who finds or guesses that URL gets in. Sometimes the URL is even accidentally exposed through a <code>robots.txt</code> file or in front-end JavaScript that only conditionally displays a link, while shipping the actual URL to every user regardless of role.</p>
+
+      <h2>Labs Solved Today</h2>
+      <ul>
+        <li><strong>Unprotected admin functionality</strong> — an admin panel reachable simply by knowing or guessing its URL, with no real access check behind it.</li>
+        <li><strong>Unprotected admin functionality with unpredictable URL</strong> — same core issue, but the URL was obfuscated rather than guessable. The catch: the URL was still leaked to every user through front-end JavaScript, proving that hiding a URL is not the same as actually protecting it.</li>
+        <li><strong>User role controlled by request parameter</strong> — the application decided a user's role based on a value like <code>?admin=true</code> in the request itself, trusting the client to report its own permission level instead of verifying it server-side.</li>
+        <li><strong>User role can be modified in user profile</strong> — a variation on the same flaw, where role data stored client-side could be tampered with to escalate privileges.</li>
+      </ul>
+
+      <h2>The Common Thread</h2>
+      <p>Every one of these labs traces back to the same root problem: trusting something the client controls — a URL's obscurity, a hidden field, a query parameter — instead of verifying permissions properly on the server, every time, for every request. Hectic day, but a genuinely useful one to sit with.</p>
+    `
   }
 ]
 
