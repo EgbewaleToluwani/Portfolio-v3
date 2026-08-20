@@ -331,6 +331,58 @@ const POSTS = [
       <h2>The Common Thread</h2>
       <p>Every one of these labs traces back to the same root problem: trusting something the client controls — a URL's obscurity, a hidden field, a query parameter — instead of verifying permissions properly on the server, every time, for every request. Hectic day, but a genuinely useful one to sit with.</p>
     `
+  },
+
+  {
+    id: "access-control-idor-url-matching",
+    title: "IDOR, URL-Matching Discrepancies, and Platform Misconfiguration",
+    date: "2026-08-20",
+    excerpt: "Continuing access control on PortSwigger's Web Security Academy: how platform-level misconfigurations and URL-matching quirks lead to bypasses, and a deep dive into horizontal privilege escalation via IDOR.",
+    body: `
+      <p>Continued the access control track today, moving into how access controls fail when they're enforced at the platform layer instead of properly inside the application itself — and into horizontal privilege escalation, which turned out to be one of the more subtle categories so far.</p>
+
+      <h2>Platform Misconfiguration</h2>
+      <p>Some applications enforce access rules at the platform layer — a rule like "deny POST requests to /admin/deleteUser for anyone outside the managers group." The problem is that this kind of rule can be bypassed without ever touching the intended endpoint directly. Some frameworks support non-standard headers like <code>X-Original-URL</code> or <code>X-Rewrite-URL</code> that let a request override which URL it's actually treated as targeting — meaning a request that looks harmless on the surface can still reach a restricted endpoint underneath. A second variant: if the platform only restricts specific HTTP methods (say, blocking POST but not GET) on a sensitive URL, and the application itself doesn't care which method performs the action, an attacker can simply switch methods to walk straight around the restriction.</p>
+
+      <h2>URL-Matching Discrepancies</h2>
+      <p>Just as interesting: access control can fail purely from inconsistency in how a URL gets matched. If the front-end restriction is case-sensitive but the back-end route isn't, requesting <code>/ADMIN/DELETEUSER</code> instead of <code>/admin/deleteUser</code> might slip past the check while still hitting the real endpoint. Similar issues show up with trailing slashes, or in frameworks that map file extensions loosely — a request to <code>/admin/deleteUser.anything</code> matching the same route as the protected one, without the access rule accounting for it.</p>
+
+      <h2>Horizontal Privilege Escalation and IDOR</h2>
+      <p>The second half of today was horizontal privilege escalation — where a user reaches another user's resources, not elevated permissions, just someone else's data. The clearest form of this is an insecure direct object reference (IDOR): a URL like <code>/myaccount?id=123</code>, where simply changing the <code>id</code> value grants access to someone else's account page. Some applications try to defend against this by using unguessable identifiers like GUIDs instead of sequential numbers — but that only holds up if the GUID never leaks elsewhere in the app, such as inside another user's messages or public reviews. Even a proper redirect-to-login response isn't automatically safe, either — if that redirect response still contains fragments of the targeted user's data before redirecting away, the leak already happened.</p>
+
+      <h2>Labs Solved</h2>
+      <ul>
+        <li>URL-based access control can be circumvented</li>
+        <li>Method-based access control can be circumvented</li>
+        <li>User ID controlled by request parameter</li>
+        <li>User ID controlled by request parameter, with unpredictable user IDs</li>
+        <li>User ID controlled by request parameter with data leakage in redirect</li>
+      </ul>
+
+      <p>The theme across all of today's labs: access control that lives at the edges — headers, URL formatting, request methods, client-supplied IDs — is only as strong as every single edge case it fails to account for.</p>
+    `
+  },
+
+  {
+    id: "clatter-first-web-app-kickoff",
+    title: "Starting My First Web App: Clatter",
+    date: "2026-08-20",
+    excerpt: "Every site I've built before was a static website. Today I started my first real web app — Clatter, a group chat app with authentication and real-time messaging.",
+    body: `
+      <p>Every project I've built up to this point has been a website — static or mostly static, no accounts, no persistent user data, nothing that behaves differently depending on who's using it. Today that changed. I started building Clatter, a group chat web app, and my first genuine step into web app territory rather than just web development.</p>
+
+      <h2>What Clatter Is</h2>
+      <p>Clatter is built around one deliberately narrow idea: group chat, and nothing else competing for attention. "Your loudest chat deserves its own app" is the whole pitch — no DMs, no feeds, no unrelated features bolted on. Just a place for one group conversation to happen properly.</p>
+
+      <h2>What's Working So Far</h2>
+      <p>The authentication flow is functional end to end: sign-up and sign-in with email and password, plus Google sign-in as an alternative, both handled through Firebase Authentication. After sign-up, users land on a profile completion step — first name, last name, a short bio, and a profile photo with a live preview before it's ever uploaded. From there, the dashboard pulls in the signed-in user's info and connects to a Firebase Realtime Database, letting users send messages that appear for everyone in the chat, distinguishing between the current user's own messages and everyone else's in the display.</p>
+
+      <h2>Why This Felt Different to Build</h2>
+      <p>A static site is finished once it looks right and works right in the browser. A web app like this has state that outlives a single page load — a signed-in user, a stored session, data flowing in and out of a real database in real time. Today was genuinely about wiring that foundation up correctly: auth working reliably, the profile step actually gating access to the dashboard, and messages persisting and syncing rather than just appearing locally.</p>
+
+      <p>Early days for Clatter, but the core loop already works: sign up, complete a profile, land in your dashboard. More to come as it develops.</p>
+      <p><img class="post-image" src="assets/blog/img/clatter.png" alt="Clatter"></p>
+    `
   }
 ]
 
