@@ -381,7 +381,7 @@ const POSTS = [
       <p>A static site is finished once it looks right and works right in the browser. A web app like this has state that outlives a single page load — a signed-in user, a stored session, data flowing in and out of a real database in real time. Today was genuinely about wiring that foundation up correctly: auth working reliably, the profile step actually gating access to the dashboard, and messages persisting and syncing rather than just appearing locally.</p>
 
       <p>Early days for Clatter, but the core loop already works: sign up, complete a profile, land in your dashboard. More to come as it develops.</p>
-      <p><img class="post-image" src="assets/blog/img/clatter.png" alt="Clatter"></p>
+      
     `
   }
 ]
