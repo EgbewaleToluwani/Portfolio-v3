@@ -383,6 +383,33 @@ const POSTS = [
       <p>Early days for Clatter, but the core loop already works: sign up, complete a profile, land in your dashboard. More to come as it develops.</p>
       
     `
+  },
+
+  {
+    id: "access-control-completing-the-topic",
+    title: "Completing Access Control: Escalation Chains, IDOR, and Multi-Step Bypasses",
+    date: "2026-08-21",
+    excerpt: "Wrapping up the access control topic on PortSwigger's Web Security Academy: turning horizontal escalation into vertical, IDOR as a formal category, multi-step process flaws, and the actual defense-in-depth principles that prevent all of it.",
+    body: `
+      <p>Finished the access control topic today — the last stretch covering how smaller flaws chain into bigger ones, a couple of overlooked enforcement patterns, and the actual principles that prevent this entire category of vulnerability in the first place.</p>
+
+      <h2>Horizontal Becoming Vertical</h2>
+      <p>One of the more important ideas today: horizontal and vertical privilege escalation aren't always separate outcomes — a horizontal flaw can become a vertical one, depending entirely on whose account gets compromised. The exact same parameter-tampering technique from horizontal escalation (changing an <code>id</code> value to access someone else's account) becomes vertical escalation the moment the targeted account happens to belong to an administrator. Same bug, same exploit method — the severity is decided entirely by whose data you land on.</p>
+
+      <h2>IDOR as Its Own Category</h2>
+      <p>Insecure direct object references got named explicitly today — a pattern that's been running underneath most of this week's labs without being formally labeled. An IDOR happens whenever an application uses input supplied directly by the user to access an object, with no check confirming that user is actually allowed to access that specific object. It's been a recognized category since it appeared in OWASP's 2007 Top Ten, and it's less a single vulnerability than a description of a whole family of implementation mistakes that all lead to the same outcome: access control bypassed through unchecked, user-controlled input.</p>
+
+      <h2>Multi-Step Processes</h2>
+      <p>A genuinely easy mistake to make: some sensitive actions happen across several steps — load a form, submit changes, review and confirm. It's common for access control to be enforced properly on the earlier steps but forgotten on the final one, because the application assumes nobody reaches step three without having correctly passed through steps one and two first. An attacker doesn't need to honor that assumption — they can skip straight to submitting the final step's request directly, with the right parameters, and bypass every check that only lived on the earlier steps.</p>
+
+      <h2>Referer-Based and Location-Based Access Control</h2>
+      <p>Two more patterns worth knowing, mainly because both are built on trusting things a client can freely fake. Referer-based access control checks the HTTP <code>Referer</code> header to confirm a request "came from" an authorized page — but that header is just something the browser sends along, and it can be forged in a direct request with no real page navigation behind it at all. Location-based access control tries to restrict access by geography, which sounds more physical and harder to fake, but is routinely bypassed with VPNs, proxies, or by manipulating client-side geolocation directly.</p>
+
+      <h2>The Actual Fix, In Principle</h2>
+      <p>What ties every lab this week together is the same handful of prevention principles: never rely on obfuscation as a substitute for real access control, deny access by default unless a resource is explicitly meant to be public, enforce access control through one consistent application-wide mechanism rather than scattered checks, require developers to explicitly declare what access is allowed for every resource, and actually audit those controls instead of assuming they work as designed.</p>
+
+      <p>Access control topic complete. Every lab this week traced back to the same root cause in different disguises: trusting something the client controls, instead of verifying properly, every time, by default.</p>
+    `
   }
 ]
 
