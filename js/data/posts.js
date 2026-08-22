@@ -410,6 +410,25 @@ const POSTS = [
 
       <p>Access control topic complete. Every lab this week traced back to the same root cause in different disguises: trusting something the client controls, instead of verifying properly, every time, by default.</p>
     `
+  },
+
+  {
+    id: "mcsi-google-dorking-osint",
+    title: "Google Hacking for OSINT — Search Operators as a Reconnaissance Skill",
+    date: "2026-08-22",
+    excerpt: "An MCSI MICS exercise on Google dorking — using targeted search operators to perform OSINT reconnaissance, and why this is one of the most accessible entry points into understanding real-world information exposure.",
+    body: `
+      <p>Completed a Google Hacking exercise in MCSI's MICS program today — practicing how to construct targeted search queries, often called "Google dorks," to perform reconnaissance using nothing but Google's own search operators.</p>
+
+      <h2>What Google Dorking Actually Is</h2>
+      <p>Google indexes an enormous amount of content that site owners never intended to be easily discoverable — exposed documents, forgotten pages, misconfigured directories. Google's built-in search operators let you construct precise, targeted queries instead of relying on generic keyword searches, effectively turning a search engine into a reconnaissance tool. None of this involves hacking in the technical sense — it's entirely built on Google's own public indexing, using search syntax that's openly documented and available to anyone.</p>
+
+      <h2>The Operators Behind It</h2>
+      <p>A few of the core building blocks: <code>site:</code> restricts results to a single domain, <code>intitle:</code> and <code>intext:</code> search a page's title versus its visible content specifically, and <code>filetype:</code> narrows results down to a specific file format like PDF, DOC, or XLS. Combined with quoted exact-phrase searches and logical operators (AND, OR, NOT), these turn into precise, deliberate queries rather than a scattershot search.</p>
+
+      <h2>Why It's Worth Practicing</h2>
+      <p>The exercise reinforced something that's easy to underestimate: a huge amount of exposed information isn't hidden behind any real security control at all — it's simply sitting in a search engine's index, waiting for the right query. No credentials required, no exploit, just knowing how to ask the right question. That makes this as valuable defensively as it is offensively. Understanding what a well-constructed search can surface about an organization is the first real step toward auditing and closing that exposure before someone else finds it first.</p>
+    `
   }
 ]
 
