@@ -429,6 +429,26 @@ const POSTS = [
       <h2>Why It's Worth Practicing</h2>
       <p>The exercise reinforced something that's easy to underestimate: a huge amount of exposed information isn't hidden behind any real security control at all — it's simply sitting in a search engine's index, waiting for the right query. No credentials required, no exploit, just knowing how to ask the right question. That makes this as valuable defensively as it is offensively. Understanding what a well-constructed search can surface about an organization is the first real step toward auditing and closing that exposure before someone else finds it first.</p>
     `
+  },
+
+  {
+    id: "mcsi-network-protocols-research",
+    title: "Researching Common Network Protocols",
+    date: "2026-08-23",
+    excerpt: "An MCSI MICS exercise researching the network protocols that run enterprise networks, and why understanding them matters for spotting where they can be exploited.",
+    body: `
+      <h2>Situation</h2>
+      <p>Enterprise networks depend on a small set of protocols to let very different devices communicate with each other. Protocols like HTTP, DNS, FTP, SSH, SMB, and several others aren't inherently insecure on their own — but because they're so widely used, they're also constantly researched and targeted by attackers looking for weaknesses in how they're implemented or configured.</p>
+
+      <h2>Task</h2>
+      <p>Today's MCSI exercise was to research and document the most common network protocols used in enterprise environments — understanding not just what each one does, but where it sits within the OSI model, what kind of data it handles, and when it's actually used in practice.</p>
+
+      <h2>Action</h2>
+      <p>I went through fourteen core protocols — including ARP, DNS, FTP, HTTP, Telnet, SSH, IMAP, POP3, RDP, SIP, SMB, SMTP, SNMP, and VNC — researching each one individually: what it does, which OSI layer it operates at, and a realistic scenario where it would actually be used. Compiling this into a single reference made the differences between protocols that are easy to lump together — like FTP vs SMB for file handling, or IMAP vs POP3 for email — much clearer than treating them as a vague, interchangeable list.</p>
+
+      <h2>Result</h2>
+      <p>A solid working reference for how enterprise networks actually communicate under the hood, and a much clearer sense of why certain protocols — Telnet and SNMP in particular, given their age and historically weak security defaults — come up so often in real-world vulnerability research. Understanding what a protocol is built to do is the first step in understanding how it can be misused.</p>
+    `
   }
 ]
 
