@@ -449,6 +449,25 @@ const POSTS = [
       <h2>Result</h2>
       <p>A solid working reference for how enterprise networks actually communicate under the hood, and a much clearer sense of why certain protocols — Telnet and SNMP in particular, given their age and historically weak security defaults — come up so often in real-world vulnerability research. Understanding what a protocol is built to do is the first step in understanding how it can be misused.</p>
     `
+  },
+
+  {
+    id: "recon-setoolkit-site-cloner-payload-listener",
+    title: "SEToolkit's Site Cloner, and an Introduction to Payloads and Listeners",
+    date: "2026-08-24",
+    excerpt: "Continuing SEToolkit exploration with the site cloner feature, and a first look into payload and listener creation — the mechanics behind gaining remote access after an initial compromise.",
+    body: `
+      <p>Continued working through SEToolkit today, picking up from the website attack vectors covered previously. Today's focus was the site cloner feature specifically, plus a first look into a different module entirely: creating a payload and listener.</p>
+
+      <h2>Site Cloner</h2>
+      <p>The site cloner takes an existing, legitimate website and produces a visual copy of it, which is the underlying mechanism behind the credential harvester module explored earlier — a convincing replica is what makes the deception work in the first place. Seeing this in more depth reinforced the same conclusion from before: how a page looks says nothing about whether it's genuine, and the defense against this class of attack has almost nothing to do with spotting bad design. It's checking the actual domain, using tools like password managers that won't autofill on a spoofed URL, and having multi-factor authentication in place so a captured password alone isn't enough.</p>
+
+      <h2>Payload and Listener — First Look</h2>
+      <p>I also started on a separate module: creating a payload and setting up a listener. At a conceptual level, a payload is code delivered to and executed on a target system, and a listener is the process on the attacker's side that waits for that payload to establish a connection back, enabling remote access. This is a meaningfully different stage of an attack chain than recon or credential harvesting — it's what happens *after* an attacker has already gained some form of initial access or delivery method, not before. I'm still early into this module and haven't gone deep into the mechanics yet — more to come as this develops.</p>
+
+      <h2>Why This Sequencing Matters</h2>
+      <p>Seeing these modules in order is clarifying in itself: recon gathers information, credential harvesting or a similar technique gets initial access, and payloads/listeners are what turn that initial access into something persistent and controllable. Understanding the shape of a full attack chain — not just isolated techniques — is what actually makes the defensive side of this meaningful.</p>
+    `
   }
 ]
 
