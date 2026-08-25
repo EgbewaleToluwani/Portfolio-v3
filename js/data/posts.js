@@ -468,6 +468,31 @@ const POSTS = [
       <h2>Why This Sequencing Matters</h2>
       <p>Seeing these modules in order is clarifying in itself: recon gathers information, credential harvesting or a similar technique gets initial access, and payloads/listeners are what turn that initial access into something persistent and controllable. Understanding the shape of a full attack chain — not just isolated techniques — is what actually makes the defensive side of this meaningful.</p>
     `
+  },
+
+  {
+    id: "recon-setoolkit-payloads-qr-mass-mailer",
+    title: "Payloads, QR Code Attacks, Mass Mailer, and the One Rule That Actually Protects You",
+    date: "2026-08-25",
+    excerpt: "Continuing SEToolkit: how payloads work, the QR code generator attack vector, mass mailer campaigns, and why the single most effective defense against social engineering has almost nothing to do with technology.",
+    body: `
+      <p>Continued with SEToolkit and social engineering today, covering how payloads actually work, the QR code generator attack vector, and the mass mailer module.</p>
+
+      <h2>Payloads, Revisited</h2>
+      <p>Following on from Day 8's introduction, today went deeper into how a payload actually functions once delivered — code planted on a target system, built to execute and establish a connection back to whoever's waiting on the other end. Understanding this mechanism is what makes the earlier stages of an attack chain — recon, credential harvesting, delivery — make sense as a whole rather than as disconnected techniques.</p>
+
+      <h2>QR Code Generator Attack Vector</h2>
+      <p>A genuinely underappreciated one: QR codes carry the same fundamental risk as a malicious link, just with the destination hidden behind an image instead of visible text. A person who'd think twice about clicking a suspicious link will often scan a QR code without a second thought, since there's no URL to read or scrutinize beforehand — the trust is misplaced onto the format itself rather than what it actually points to.</p>
+
+      <h2>Mass Mailer</h2>
+      <p>The mass mailer module demonstrates how phishing scales — the same deceptive email sent to many targets at once, rather than a single, individually crafted attempt. It's a reminder that most phishing isn't highly targeted or sophisticated; it succeeds on volume and probability, not precision.</p>
+
+      <h2>The Actual Rule That Matters</h2>
+      <p>The single most useful takeaway from today isn't technical at all: treat every unknown link or file as malicious by default, unless there's undoubtable reason to trust it. Not "probably fine" — undoubtable. The reasoning is simple and unforgiving: once a link is clicked or a file is opened, the moment of choice has already passed. There's no partial undo. Everything after that point is damage control, not prevention.</p>
+
+      <h2>Why This Matters Beyond Individual Awareness</h2>
+      <p>This is also exactly what social engineering campaigns are for at an organizational level — not to trick staff for its own sake, but to test, in a controlled and safe way, whether that default-distrust instinct is actually in place. Running these campaigns deliberately helps organizations identify where human-based entry points exist before a real threat actor finds them, and gives staff practical, repeated exposure to what these attempts actually look like, rather than relying on a one-time training slide they've long since forgotten.</p>
+    `
   }
 ]
 
