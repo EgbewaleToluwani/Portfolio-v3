@@ -493,7 +493,72 @@ const POSTS = [
       <h2>Why This Matters Beyond Individual Awareness</h2>
       <p>This is also exactly what social engineering campaigns are for at an organizational level — not to trick staff for its own sake, but to test, in a controlled and safe way, whether that default-distrust instinct is actually in place. Running these campaigns deliberately helps organizations identify where human-based entry points exist before a real threat actor finds them, and gives staff practical, repeated exposure to what these attempts actually look like, rather than relying on a one-time training slide they've long since forgotten.</p>
     `
-  }
+  },
+
+  {
+    id: "access-control-day10-auditing-clatter-firestore-rules",
+    title: "Day 10 — Applying What I've Learned: Auditing and Fixing Clatter's Own Firestore Security Rules",
+    date: "2026-08-26",
+    excerpt: "Taking a week of access control and privilege escalation lessons and pointing them at my own project — auditing Clatter's live Firestore security rules, finding a real privilege-escalation gap, and fixing it.",
+    body: `
+      <h2>Situation</h2>
+      <p>This week's cybersecurity learning has centered on access control — IDOR, horizontal and vertical privilege escalation, and how easily an application can trust something it shouldn't. I wanted today's entry to be less about a lab environment and more about applying that thinking somewhere real: Clatter, the group chat web app I built this past week.</p>
+
+      <h2>Task</h2>
+      <p>Audit Clatter's actual Firestore security rules — the rules deciding who can read, write, update, or delete data across user profiles, groups, and group messages — looking specifically for the same class of issues covered this week: broad reads exposing data that shouldn't be visible, and writes that let a user modify more than they should be able to.</p>
+
+      <h2>Action</h2>
+      <p>Went rule by rule across three collections:</p>
+      <ul>
+        <li><strong>User profiles</strong> — reads are open to any signed-in user, while creating, updating, or deleting a profile is correctly restricted to that user's own document. A deliberate trade-off for username discoverability, but worth flagging: every signed-in user can currently read every other user's full profile, including their email.</li>
+        <li><strong>Group messages</strong> — reads and writes are correctly scoped to group membership, and creating a message requires the sender field to match the actual authenticated user, preventing impersonation. Editing or deleting is restricted to the original sender. This section held up well.</li>
+        <li><strong>Groups themselves</strong> — this is where I found a genuine issue. Updating a group was allowed for <em>any current member</em>, with no restriction on which fields could change. That meant a regular, non-admin member could technically rewrite the group document's <code>admins</code> field and grant themselves admin status — the same underlying flaw as the "user role can be modified in user profile" pattern studied earlier this week, just relocated from an individual account into a group's membership structure.</li>
+      </ul>
+
+      <h2>The Fix</h2>
+      <p>Changed the group update rule from "any member can update" to "only current admins can update":</p>
+      <pre><code>allow update: if request.auth != null && request.auth.uid in resource.data.admins;</code></pre>
+      <p>This fully closes the privilege-escalation path. The trade-off: Clatter doesn't have a "leave group" feature yet, which would normally require a member to update the document to remove themselves — so restricting updates to admins-only has no downside today. Once a leave-group feature exists, this rule will need to be split further: members should be able to update specific fields like their own membership, while the <code>admins</code> field itself stays admin-only. Noted for when that feature gets built, not fixed prematurely.</p>
+
+      <h2>Result</h2>
+      <p>One real, concrete vulnerability found and fixed in a project I built myself, not a deliberately vulnerable lab. The user-profile read scope remains a separate, lower-severity design question worth revisiting later. Genuinely the most useful exercise of the week — a lab teaches you to recognize a pattern; auditing and fixing your own live rules is what actually tests whether you can find and correct it without someone pointing you at it first.</p>
+    `
+  },
+
+  {
+    id: "clatter-web-app-project-writeup",
+    title: "Clatter — Building My First Web App in a Week, and Being Honest About Where It Falls Short",
+    date: "2026-08-26",
+    excerpt: "A full look at Clatter, a group chat web app I built in about a week — what it actually does, how it's put together, and a genuinely honest account of what's missing or unfinished, because it's a personal project, not a production product.",
+    body: `
+      <p>Clatter is a group chat web app I built in about a week — "Your loudest chat deserves its own app." One line, deliberately narrow scope: group conversations, done properly, without trying to be a full messaging platform. I want to be upfront before anything else: this is a personal learning project, built quickly and not a production-ready product, and I'd rather show it honestly, flaws included, than oversell it.</p>
+
+      <h2>What It Actually Does</h2>
+      <p>Authentication is handled through Firebase Auth, supporting both email/password sign-up and Google sign-in. After signing up, a new user is routed through a profile completion step — first name, last name, a permanent username, and a short bio — before ever reaching the dashboard. Usernames are checked for uniqueness against existing accounts and restricted to lowercase letters and numbers only, enforced both on input and again on submission.</p>
+
+      <p>Once a profile exists, new users are automatically joined into a small set of default groups, so the app isn't an empty room the moment someone signs up. From there, the dashboard and profile pages pull a user's data from Firestore, cache a working copy locally for quick access across pages, and support editing your name, bio, and profile photo, plus a full account deletion flow that removes the user from every group they belonged to before deleting their profile document and their authentication record.</p>
+
+      <h2>How It's Actually Built</h2>
+      <p>User profiles, groups, and group messages live in Firestore, structured with messages as a subcollection under each group document — a shift from an earlier version of the project, which used Firebase's Realtime Database with a much flatter, single-collection chat structure. Group membership and admin status are tracked as arrays on each group document, checked by a Firestore security rules layer that decides who can read, write, or manage a given group — rules I built, then went back and actually audited properly once I had a week of access control fundamentals behind me (more on that in a separate post).</p>
+
+      <h2>Where It Genuinely Falls Short</h2>
+      <p>This is the part I want to be direct about, since it's easy to only show the polished angle:</p>
+      <ul>
+        <li><strong>Profile photos are stored as base64 data directly inside Firestore documents</strong>, not uploaded to proper file storage. Simple to implement, but inefficient, bloats document size, and Firestore has a hard 1MB-per-document limit — a large enough image could break this outright.</li>
+        <li><strong>No image compression or resizing</strong> before a photo gets stored, which compounds the problem above.</li>
+        <li><strong>Deleted accounts leave orphaned messages behind.</strong> The deletion flow removes a user from their groups and deletes their profile, but any messages they sent remain in group subcollections, now pointing to a sender that no longer exists.</li>
+        <li><strong>No email verification step</strong> — an account is usable immediately after sign-up, with no confirmation the email address is real or owned by the person signing up.</li>
+        <li><strong>No "leave group" feature yet</strong> — a deliberate gap for now, and one that actually shapes how strict the group security rules can be until it's built (again, more in the access-control post).</li>
+        <li><strong>Client-side data caching via localStorage</strong> can go stale if a profile is updated elsewhere, since it isn't kept in sync in real time.</li>
+        <li><strong>No pagination, typing indicators, or read receipts</strong> — the chat functionality itself is intentionally minimal, closer to a working proof of concept than a feature-complete messaging app.</li>
+      </ul>
+
+      <h2>Why I'm Building It Anyway</h2>
+      <p>Every project before this one has been a static site — finished once it looks and works right in the browser. Clatter is the first thing I've built with real state, real persistence, and real security boundaries to actually reason about — sessions, a live database, and the real question of who's allowed to see or change what. A week in, that's exactly the kind of problem I wanted to be sitting with.</p>
+      <p><img class="post-image" src="assets/blog/img/clatter.png" alt="Clatter"></p>
+      <p><img class="post-image" src="assets/blog/img/clatterDash.png" alt="Clatter"></p>
+    `
+  }  
 ]
 
 window.POSTS = POSTS
