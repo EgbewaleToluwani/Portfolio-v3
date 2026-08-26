@@ -517,8 +517,7 @@ const POSTS = [
 
       <h2>The Fix</h2>
       <p>Changed the group update rule from "any member can update" to "only current admins can update":</p>
-      <pre><code>allow update: if request.auth != null
-&& request.auth.uid in resource.data.admins;</code></pre>
+      <pre><code>allow update: if request.auth != null && request.auth.uid in resource.data.admins;</code></pre>
       <p>This fully closes the privilege-escalation path. The trade-off: Clatter doesn't have a "leave group" feature yet, which would normally require a member to update the document to remove themselves — so restricting updates to admins-only has no downside today. Once a leave-group feature exists, this rule will need to be split further: members should be able to update specific fields like their own membership, while the <code>admins</code> field itself stays admin-only. Noted for when that feature gets built, not fixed prematurely.</p>
 
       <h2>Result</h2>
@@ -559,7 +558,32 @@ const POSTS = [
       <p><img class="post-image" src="assets/blog/img/clatter.png" alt="Clatter"></p>
       <p><img class="post-image" src="assets/blog/img/clatterDash.png" alt="Clatter"></p>
     `
-  }  
+  },
+  
+  {
+    id: "payload-listener-day11-meterpreter-exfiltration-lab",
+    title: "Day 11 — Completing a Full Exploitation Chain: Payload, Listener, and File Exfiltration with Meterpreter",
+    date: "2026-08-27",
+    excerpt: "Building on earlier payload and listener fundamentals, I set up an isolated Windows VM lab and completed a full local exploitation workflow — from establishing a reverse Meterpreter session to pulling a file off the compromised host with the download command.",
+    body: `
+      <p>Today tied together everything explored earlier in payload and listener fundamentals into one complete, working exercise — set up entirely inside an isolated virtual lab, not against anything real or external.</p>
+
+      <h2>Lab Setup</h2>
+      <p>Configured a VMware shared folder between a Zorin OS host and a Windows VM, and used Python's built-in HTTP server (<code>python3 -m http.server</code>) to move files between host and guest as an alternative transfer method. Confirmed the Windows VM's IP address with <code>ipconfig</code> and verified connectivity between the two machines before proceeding — attack machine at 172.16.136.130, target VM at 172.16.136.131, both isolated within the lab's host-only network.</p>
+
+      <h2>Establishing the Session</h2>
+      <p>A reverse Meterpreter session was generated and delivered to the Windows VM. Once triggered, it connected back to the attack machine, landing as session 4. Interacted with it directly using <code>sessions -i 4</code>, then worked through core Meterpreter commands to enumerate and navigate the target system.</p>
+
+      <h2>Cross-Platform Command Mapping</h2>
+      <p>Reviewed the practical differences between Linux and Windows commands while operating from the Meterpreter shell on the target — since a Meterpreter session runs its own command set on top of the compromised OS, some commands map close to their Linux equivalents (<code>ls</code>, <code>cd</code>, <code>pwd</code>), while others need Windows-specific handling (<code>getuid</code>, <code>sysinfo</code>, <code>hashdump</code> for credential material, though this session focused on file access rather than credential extraction).</p>
+
+      <h2>File Exfiltration</h2>
+      <p>Used Meterpreter's <code>download</code> command to pull a target document from the compromised Windows VM directly onto the attack machine's local filesystem, closing out the full chain: payload delivery, session establishment, target enumeration, and successful data exfiltration.</p>
+
+      <h2>Why This Matters</h2>
+      <p>Running this chain end to end in a fully isolated environment makes the individual pieces — payloads, listeners, session interaction, the <code>download</code> primitive — click as one coherent workflow rather than isolated concepts. It's also a direct illustration of why endpoint detection, egress monitoring, and least-privilege file access controls matter operationally: every stage here — payload execution, the reverse connection, and the file transfer itself — is a distinct point where a properly instrumented environment should generate a detectable signal.</p>
+    `
+  }
 ]
 
 window.POSTS = POSTS
