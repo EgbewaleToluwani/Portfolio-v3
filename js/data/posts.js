@@ -517,8 +517,8 @@ const POSTS = [
 
       <h2>The Fix</h2>
       <p>Changed the group update rule from "any member can update" to "only current admins can update":</p>
-      <pre><code>allow update: if request.auth != null 
-      && request.auth.uid in resource.data.admins;</code></pre>
+      <pre><code>allow update: if request.auth != null
+&& request.auth.uid in resource.data.admins;</code></pre>
       <p>This fully closes the privilege-escalation path. The trade-off: Clatter doesn't have a "leave group" feature yet, which would normally require a member to update the document to remove themselves — so restricting updates to admins-only has no downside today. Once a leave-group feature exists, this rule will need to be split further: members should be able to update specific fields like their own membership, while the <code>admins</code> field itself stays admin-only. Noted for when that feature gets built, not fixed prematurely.</p>
 
       <h2>Result</h2>
