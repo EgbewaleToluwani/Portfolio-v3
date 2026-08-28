@@ -583,6 +583,33 @@ const POSTS = [
       <h2>Why This Matters</h2>
       <p>Running this chain end to end in a fully isolated environment makes the individual pieces — payloads, listeners, session interaction, the <code>download</code> primitive — click as one coherent workflow rather than isolated concepts. It's also a direct illustration of why endpoint detection, egress monitoring, and least-privilege file access controls matter operationally: every stage here — payload execution, the reverse connection, and the file transfer itself — is a distinct point where a properly instrumented environment should generate a detectable signal.</p>
     `
+  },
+
+  {
+    id: "cors-origin-reflection-vulnerability",
+    title: "Cross-Origin Resource Sharing (CORS) and Origin Reflection",
+    date: "2026-08-28",
+    excerpt: "Starting a new topic on PortSwigger's Web Security Academy: CORS misconfigurations, how the same-origin policy works, and exploiting a basic origin-reflection vulnerability to steal data across domains.",
+    body: `
+      <p>Started a new topic today: Cross-Origin Resource Sharing (CORS), and specifically how a poorly configured CORS policy can turn a browser security mechanism into a data-theft vector.</p>
+
+      <h2>The Same-Origin Policy, First</h2>
+      <p>To understand CORS, the same-origin policy (SOP) has to come first. SOP is the browser's default, restrictive rule that limits how a website can interact with resources on a different domain. It generally allows one domain to *send* a request to another, but blocks it from actually *reading the response* — which is exactly what stops a malicious site from silently pulling private data from a site a user happens to be logged into.</p>
+
+      <h2>What CORS Actually Is</h2>
+      <p>CORS is the controlled mechanism that relaxes SOP on purpose, for legitimate cases — a site that needs to serve data to a trusted subdomain or a known third party. It works through a set of HTTP headers exchanged between browser and server, most importantly <code>Access-Control-Allow-Origin</code>, which tells the browser which origins are permitted to actually read a response, not just send the request. It's worth being clear that CORS is not a defense against CSRF — it's a separate mechanism solving a separate problem, and conflating the two is a common mistake.</p>
+
+      <h2>Where It Breaks: Origin Reflection</h2>
+      <p>Maintaining an explicit allow-list of trusted domains takes ongoing effort, and it's easy to get wrong. Some applications take a shortcut instead: they read whatever <code>Origin</code> header the incoming request sends, and simply reflect that exact value back in the <code>Access-Control-Allow-Origin</code> response header — effectively trusting any origin that asks. Combined with <code>Access-Control-Allow-Credentials: true</code>, this means a request from literally any attacker-controlled domain, sent while the victim is authenticated, gets processed in-session and its response becomes readable cross-origin.</p>
+
+      <p>The exploitation pattern is straightforward once that gap exists: a script on an attacker's own domain issues a credentialed request to the vulnerable site's sensitive endpoint. Because the server reflects the attacker's origin as trusted, the browser allows the script to read the response — including anything sensitive returned, like an API key or CSRF token — and exfiltrate it back to the attacker's own server.</p>
+
+      <h2>Lab Solved</h2>
+      <p>CORS vulnerability with basic origin reflection.</p>
+
+      <h2>Why This Is Worth Understanding</h2>
+      <p>CORS misconfigurations are a good example of a security control that looks correctly implemented at a glance — headers are present, credentials are handled, everything "works" — while actually providing no real restriction at all. The lesson isn't "don't use CORS," it's that reflecting user-controlled input directly into a trust decision, which is exactly what happens when the <code>Origin</code> header dictates the <code>Access-Control-Allow-Origin</code> response, defeats the entire point of having an allow-list in the first place.</p>
+    `
   }
 ]
 
