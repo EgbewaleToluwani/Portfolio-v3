@@ -1,5 +1,21 @@
 const PROJECTS = [
     {
+        id: "clatter",
+        image: "../../assets/img/clatter.png",
+        name: "Clatter",
+        category: "webdev",
+        tagline: "Your loudest chat deserves its own app.",
+        description: "A group chat web app built in about a week — my first project with real authentication, persistent state, and a live database instead of a static site. Handles email/password and Google sign-in via Firebase Auth, a guided profile-completion flow, and real-time group messaging backed by Firestore, secured with custom Firestore security rules I wrote and later audited for access control flaws.",
+        tags: [
+            "javascript", "firebase", "firestore", "webapp", "auth"
+        ],
+        link: {
+            demo: "https://augustfire26-8463d.web.app/",
+            github: ""
+        }
+    },
+
+    {
         id: "domain-exposure-audit",
         image: "../../assets/img/dae.png",
         name: "Domain Exposure Audit",

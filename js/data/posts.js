@@ -610,6 +610,37 @@ const POSTS = [
       <h2>Why This Is Worth Understanding</h2>
       <p>CORS misconfigurations are a good example of a security control that looks correctly implemented at a glance — headers are present, credentials are handled, everything "works" — while actually providing no real restriction at all. The lesson isn't "don't use CORS," it's that reflecting user-controlled input directly into a trust decision, which is exactly what happens when the <code>Origin</code> header dictates the <code>Access-Control-Allow-Origin</code> response, defeats the entire point of having an allow-list in the first place.</p>
     `
+  },
+
+  {
+    id: "cors-whitelist-parsing-null-origin",
+    title: "CORS Whitelist Parsing Mistakes and the Null Origin Trap",
+    date: "2026-08-29",
+    excerpt: "Continuing CORS on PortSwigger's Web Security Academy: how origin whitelist implementations get broken by careless prefix/suffix matching, and why trusting the null origin value opens a genuine, exploitable gap.",
+    body: `
+      <p>Continued the CORS topic today, moving from basic origin reflection into two more subtle failure modes: mistakes in how a whitelist actually gets checked, and the specific danger of trusting the null origin value.</p>
+
+      <h2>Whitelists Aren't Automatically Safe</h2>
+      <p>Yesterday's post covered origin reflection with no real check at all. A whitelist looks like the fix — compare the incoming <code>Origin</code> header against a known list of trusted domains, and only reflect it back if there's a match. But a whitelist is only as good as how it's actually implemented, and that's where today's labs focused.</p>
+
+      <h2>Prefix and Suffix Matching Gone Wrong</h2>
+      <p>Some applications try to trust an entire family of domains at once — every subdomain of their own site, or every domain belonging to a partner organization — implemented through prefix or suffix string matching, or regular expressions. Both directions can be exploited if the matching logic isn't precise:</p>
+      <ul>
+        <li>If an app trusts anything <em>ending in</em> <code>normal-website.com</code>, an attacker can simply register <code>hackersnormal-website.com</code> — same suffix, completely different, attacker-controlled domain.</li>
+        <li>If an app trusts anything <em>starting with</em> <code>normal-website.com</code>, an attacker can register <code>normal-website.com.evil-user.net</code> — the real domain sits at the start of the string, but the actual domain being registered and controlled is <code>evil-user.net</code>.</li>
+      </ul>
+      <p>Both cases come down to the same root problem: matching against a substring of a domain name is not the same as matching against the actual, structurally correct domain — and an attacker only needs to find where that distinction breaks down.</p>
+
+      <h2>The Null Origin Trap</h2>
+      <p>The second, more subtle issue: browsers legitimately send <code>Origin: null</code> in several ordinary situations — cross-origin redirects, requests from serialized data, <code>file:</code> protocol requests, and sandboxed cross-origin requests. Some applications whitelist <code>null</code> specifically to make local development easier, without realizing that <code>null</code> isn't a value only their own dev environment can produce.</p>
+      <p>An attacker can deliberately generate a request carrying <code>Origin: null</code> using a sandboxed iframe — for example, an iframe with a restrictive sandbox attribute pointed at inline, data-URI-based script. That script issues a credentialed cross-origin request to the vulnerable endpoint. Because the server trusts <code>null</code>, and the sandboxed iframe genuinely sends <code>Origin: null</code>, the request passes the whitelist check and the response becomes readable, cookies and all, exactly like yesterday's reflection vulnerability.</p>
+
+      <h2>Labs Solved</h2>
+      <p>CORS vulnerability with trusted null origin.</p>
+
+      <h2>The Common Thread</h2>
+      <p>Both of today's issues are really the same underlying lesson from a different angle: a whitelist is only a real control if the comparison logic is exact and the values being trusted are genuinely impossible for an attacker to produce. String matching that's slightly too loose, or a special-case value that's more universally reachable than it looks, both quietly turn an intended restriction into no restriction at all.</p>
+    `
   }
 ]
 
