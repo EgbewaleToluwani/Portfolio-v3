@@ -641,6 +641,33 @@ const POSTS = [
       <h2>The Common Thread</h2>
       <p>Both of today's issues are really the same underlying lesson from a different angle: a whitelist is only a real control if the comparison logic is exact and the values being trusted are genuinely impossible for an attacker to produce. String matching that's slightly too loose, or a special-case value that's more universally reachable than it looks, both quietly turn an intended restriction into no restriction at all.</p>
     `
+  },
+
+  {
+    id: "cors-intranet-attacks-and-prevention",
+    title: "Intranet CORS Attacks and How to Actually Prevent CORS Vulnerabilities",
+    date: "2026-08-31",
+    excerpt: "Closing out CORS on PortSwigger's Web Security Academy: how attacks work even without credentials against internal networks, and the concrete configuration principles that actually prevent this entire vulnerability class.",
+    body: `
+      <p>Wrapped up CORS today — the final case, which doesn't even need credentials to be dangerous, and the actual prevention principles that tie the whole topic together.</p>
+
+      <h2>Most CORS Attacks Need Credentials — This One Doesn't</h2>
+      <p>Every case covered so far in this topic depended on <code>Access-Control-Allow-Credentials: true</code> — without it, a victim's browser won't send cookies along with a cross-origin request, so an attacker only gets unauthenticated content, which they could just browse to directly anyway. That's normally where the attack surface ends.</p>
+      <p>The exception is intranets. Internal websites sitting on private IP address space aren't directly reachable by an external attacker at all — and are often held to a noticeably lower security standard than public-facing sites, precisely because they were never expected to face external traffic. If an internal application responds to cross-origin requests with <code>Access-Control-Allow-Origin: *</code>, it's trusting literally any origin, no credentials required. If a user inside that private network also browses the public internet, their browser becomes an unwitting proxy: an external attacker's site can issue requests that get sent from inside the network, reaching intranet resources the attacker could never access directly themselves.</p>
+
+      <h2>Actual Prevention, Not Just Avoiding Mistakes</h2>
+      <p>The topic closed with concrete defensive principles, which read as a clean summary of everything gone wrong across the last four days:</p>
+      <ul>
+        <li><strong>Specify real, explicit trusted origins</strong> for any resource containing sensitive data — no shortcuts.</li>
+        <li><strong>Never dynamically reflect the Origin header</strong> without real validation against an allow-list — the exact flaw from Day 12.</li>
+        <li><strong>Never whitelist the null origin</strong> — sandboxed and internal-document requests can produce it legitimately, which an attacker can also reproduce, as covered on Day 13.</li>
+        <li><strong>Avoid wildcard origins on internal networks</strong> specifically — network isolation alone isn't sufficient once internal browsers can reach untrusted external sites, which is exactly today's intranet case.</li>
+        <li><strong>CORS is never a substitute for real server-side security</strong> — authentication and session management still have to do their job independently, because an attacker can always forge a direct request claiming to be from a trusted origin. CORS governs browser behavior; it says nothing about what a server should accept from a raw, non-browser request.</li>
+      </ul>
+
+      <h2>CORS, Start to Finish</h2>
+      <p>Across all five days: CORS breaks through blind origin reflection, sloppy whitelist matching, trusting the null origin, trust extended to an origin with its own weaknesses (XSS or plain HTTP), and — today — trusting any origin at all on an internal network. Every single case reduces to the same idea: CORS is a trust decision, and every trust decision is only as sound as what it's actually verifying, not what it appears to be checking on the surface.</p>
+    `
   }
 ]
 
