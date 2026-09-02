@@ -668,6 +668,30 @@ const POSTS = [
       <h2>CORS, Start to Finish</h2>
       <p>Across all five days: CORS breaks through blind origin reflection, sloppy whitelist matching, trusting the null origin, trust extended to an origin with its own weaknesses (XSS or plain HTTP), and — today — trusting any origin at all on an internal network. Every single case reduces to the same idea: CORS is a trust decision, and every trust decision is only as sound as what it's actually verifying, not what it appears to be checking on the surface.</p>
     `
+  },
+
+  {
+    id: "bug-bounty-pivot-idor-methodology",
+    title: "Pivoting to Bug Bounty Hunting, and How IDOR Actually Gets Found",
+    date: "2026-09-02",
+    excerpt: "Stepping away from structured labs for a day to find where hands-on, real-world practice actually happens — breaking down how IDOR and access control vulnerabilities genuinely arise and get discovered, then signing up for my first bug bounty platform.",
+    body: `
+      <h2>Situation</h2>
+      <p>Seventeen days into structured learning — PortSwigger labs, MCSI exercises, SEToolkit — and today was the first day that structure alone didn't feel like the right next step. Labs are good for building technique, but they're not the same as testing a real, live system with real consequences behind it.</p>
+
+      <h2>Task</h2>
+      <p>Figure out where genuinely hands-on, real-world security practice actually happens outside of a lab environment, understand properly how the vulnerability class I've spent the most time on — access control and IDOR — actually gets found in practice, and take the first real step toward doing it for real.</p>
+
+      <h2>Action</h2>
+      <p>Broke down IDOR and access control vulnerabilities at the root: they exist whenever an application confirms who a user is, but doesn't separately verify what that specific user is authorized to touch. In practice this shows up as predictable object IDs in URLs, functionality hidden in the UI but unprotected on the backend, multi-step processes that only enforce checks on the earlier steps, and role or permission data trusted from the client instead of verified server-side.</p>
+
+      <p>The actual real-world methodology is more systematic than clever: set up two test accounts on a target, map every request containing an identifier, then deliberately swap IDs between accounts and see what comes back — using Burp Suite's Repeater for the actual swap-and-replay work. APIs specifically tend to leak more than the UI displays, since a JSON response often includes fields the frontend just chooses not to render.</p>
+
+      <p>With that understanding in hand, signed up on Bugcrowd — a bug bounty platform where researchers test real, live production systems belonging to real companies, working within a defined scope and rules of engagement instead of a sandboxed lab. Set up a profile calibrated honestly to where I actually am: Beginner track, Developer background, Web and Backend/Server platforms, with skills and industries selected to match real experience rather than aspiration.</p>
+
+      <h2>Result</h2>
+      <p>A genuine shift in direction — from "complete another lab" to "test something real, with real scope and real consequences." No submissions yet, but a real account, a real profile, and a clear, repeatable methodology for the exact vulnerability class I already have the most practiced eye for. Next step: pick an actual target, read its scope properly, and start mapping requests for real.</p>
+    `
   }
 ]
 
