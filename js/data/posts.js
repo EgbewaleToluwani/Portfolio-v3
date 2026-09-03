@@ -692,6 +692,33 @@ const POSTS = [
       <h2>Result</h2>
       <p>A genuine shift in direction — from "complete another lab" to "test something real, with real scope and real consequences." No submissions yet, but a real account, a real profile, and a clear, repeatable methodology for the exact vulnerability class I already have the most practiced eye for. Next step: pick an actual target, read its scope properly, and start mapping requests for real.</p>
     `
+  },
+
+  {
+    id: "vibed",
+    title: "Building Vibed as a Web App — Where Things Stand",
+    date: "2026-09-03",
+    excerpt: "Progress notes on building Vibed as a responsive web app — vanilla JS and Firebase, built with an actual launch in mind, not just a portfolio piece.",
+    body: `
+      <p>I'm building Vibed from the ground up as a responsive web app — vanilla JavaScript and Firebase, working across both desktop and mobile layouts — with the intention of actually launching and growing it in a real city, not just shipping it as a portfolio piece.</p>
+
+      <h2>What's Fully Built and Working</h2>
+      <ul>
+        <li>A polished landing page, with attention paid to small correctness details like using <code>&lt;a&gt;</code> versus <code>&lt;button&gt;</code> appropriately depending on whether an element navigates or performs an action</li>
+        <li>Full signup flow — email/password and Google Sign-In, writing a Firestore profile on account creation, sending email verification, and caching a lightweight user object to localStorage for fast access across pages</li>
+        <li>Full login flow — same dual auth methods, gated on email verification status, with a self-healing fallback that creates a minimal profile if one is unexpectedly missing from Firestore</li>
+        <li>An email verification screen with a resend button that disables itself while sending and gives toast feedback, auto-redirecting once verification completes</li>
+        <li>A dashboard shell with sidebar navigation, view-switching between sections, and a working auth guard</li>
+        <li>A fully editable profile view — bio editing, compressed photo upload stored in Firestore, synced back to local cache, plus a dedicated Safety Center and sign-out</li>
+      </ul>
+
+      <h2>What's Still Stubbed Out</h2>
+      <p>The core interactive views are still placeholders — this is genuinely the next real phase of the build, moving from account infrastructure into the actual product experience. Also on the list: wiring up account deletion, which currently has a button but no handler behind it yet.</p>
+
+      <h2>What's Next</h2>
+      <p>The next real milestone is building out the live feed — pulling real-time data into the app using Firestore's <code>onSnapshot</code> listeners, so the experience actually feels live rather than requiring a manual refresh. More updates as that takes shape.</p>
+      <p><img class="post-image" src="assets/blog/img/vibed.png" alt="Vibed"></p>
+    `
   }
 ]
 
