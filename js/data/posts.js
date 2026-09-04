@@ -719,6 +719,28 @@ const POSTS = [
       <p>The next real milestone is building out the live feed — pulling real-time data into the app using Firestore's <code>onSnapshot</code> listeners, so the experience actually feels live rather than requiring a manual refresh. More updates as that takes shape.</p>
       <p><img class="post-image" src="assets/blog/img/vibed.png" alt="Vibed"></p>
     `
+  },
+
+  {
+    id: "vibed-create-event-and-home-feed",
+    title: "Vibed: Event Creation Live, Home Feed Underway",
+    date: "2026-09-04",
+    excerpt: "A lighter day, but real progress on Vibed: a fully functional Create Event page writing to Firestore, and the first steps toward the Home feed that will actually display those events.",
+    body: `
+      <h2>Situation</h2>
+      <p>Not a full day today, but still made real forward progress on Vibed rather than losing the day entirely.</p>
+
+      <h2>Task</h2>
+      <p>Get event creation fully working end to end, and begin wiring up the Home feed to actually surface those events once created.</p>
+
+      <h2>Action</h2>
+      <p>Built out the Create Event page so it properly writes event data to Firestore — title, description, location, and capacity all captured and stored correctly. This follows directly on from last session's fully working Profile page, which now draws and updates live data between Firestore and local cache in both directions.</p>
+
+      <p>With event creation confirmed working, moved into the Home page — the view responsible for pulling those events back out of Firestore and actually displaying them. This is currently in progress rather than finished.</p>
+
+      <h2>Result</h2>
+      <p>Two of the app's core pieces are now genuinely connected: events can be created and persisted, and the feed meant to surface them is underway. Auth, profile, and event creation are now all real, working infrastructure rather than placeholders — the Home feed is the next piece to land, and the one that will make the app actually feel usable end to end.</p>
+    `
   }
 ]
 
