@@ -741,6 +741,30 @@ const POSTS = [
       <h2>Result</h2>
       <p>Two of the app's core pieces are now genuinely connected: events can be created and persisted, and the feed meant to surface them is underway. Auth, profile, and event creation are now all real, working infrastructure rather than placeholders — the Home feed is the next piece to land, and the one that will make the app actually feel usable end to end.</p>
     `
+  },
+
+  {
+    id: "vibed-security-controls-client-vs-server",
+    title: "Vibed: Input Validation, Session Guards, and the Client-Side Trap",
+    date: "2026-09-05",
+    excerpt: "A security-focused look at what's actually been built into Vibed so far — input validation, logic control, session guards — and the important distinction between validation that protects UX and validation that actually protects data.",
+    body: `
+      <p>Today's session on Vibed was less about new features and more about looking at what's already been built through a security lens — specifically the event creation and joining flow.</p>
+
+      <h2>Input Validation</h2>
+      <p>Every form field in event creation has real constraints, not just placeholder text: event titles capped at 40 characters, descriptions at 170, location at 120, profile bios at 90 — all enforced via <code>maxlength</code>, alongside <code>required</code> attributes and native <code>date</code>/<code>time</code> input types rather than free-text fields prone to malformed input.</p>
+
+      <h2>Logic Control</h2>
+      <p>Beyond basic field validation, there's real business-logic enforcement in the create flow: an event date can't be set in the past — checked by comparing the selected date against today's date and rejecting it with user feedback if it fails. Participant capacity is bounded between 2 and 50, enforced through the stepper controls rather than allowing an arbitrary number. On the join side, a user can't join an event twice (checked against the existing participant array) and can't join a full event (checked against the capacity limit) — both surfaced with clear feedback rather than failing silently.</p>
+
+      <h2>Session Management</h2>
+      <p>Every sensitive action — creating an event, joining an event, saving a bio update — checks for a valid authenticated user (<code>USER?.uid</code>) before proceeding, rather than assuming a signed-in state. If that check fails, the action stops immediately with an explicit message rather than attempting the write and failing confusingly later.</p>
+
+      <h2>The Honest Part: Client-Side Isn't the Same as Secure</h2>
+      <p>Here's the part worth being direct about, since it's the actual security lesson today surfaced. Every control described above — the date check, the capacity cap, the duplicate-join guard — currently lives entirely in client-side JavaScript. That's genuinely valuable for user experience: it gives immediate feedback and prevents accidental mistakes. But none of it is real security on its own, because client-side code can always be bypassed. Anyone could open browser dev tools, or call Firestore directly with their own script, and submit an event with a capacity of 500, a date in 2020, or join a full event — completely skipping every check described above, since nothing on the server is currently verifying any of it.</p>
+
+      <p>This is the exact same lesson underneath everything covered in the access control module weeks ago: a check that only exists on the client is a suggestion, not a boundary. The real fix is matching Firestore security rules that independently enforce these same constraints server-side — capacity limits, valid dates, no duplicate joins — the same way rules already govern who can read or write group and message data on Clatter. That's the next real security task for Vibed, not a new feature: closing the gap between "the UI won't let you do this" and "the server won't let you do this."</p>
+    `
   }
 ]
 
