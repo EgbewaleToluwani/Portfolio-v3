@@ -3,6 +3,7 @@ const POSTS = [
         id: "bec-simulation-osint",
         title: "Simulating a BEC Attack Using Only OSINT",
         date: "2026-08-07",
+        featured: true,
         excerpt: "A social engineering demonstration targeting ProbablyMonsters, built entirely from open-source intelligence.",
         body: `
   <p>I recently ran a simulated cyberattack on a real company — using nothing but public information.</p>
@@ -57,9 +58,9 @@ const POSTS = [
        id: "portfolio-v3-blog-build-process",
       title: "Building My Portfolio's Blog Section — And Actually Understanding Every Line",
       date: "2026-08-15",
-      excerpt: "Adding a data-driven blog and CV section to Portfolio v3, and choosing to slow down and learn the architecture properly instead of just copying working code.",
+      excerpt: "Adding a data-driven blog to Portfolio v3, and choosing to slow down and learn the architecture properly instead of just copying working code.",
       body: `
-    <p>I spent this session adding a blog section and downloadable CV to Portfolio v3 — but the more interesting part wasn't what got built, it was how I built it.</p>
+    <p>I spent this session adding a blog section to Portfolio v3 — but the more interesting part wasn't what got built, it was how I built it.</p>
 
     <h2>The Decision That Shaped Everything</h2>
     <p>I didn't want a blog where publishing a new post meant creating a new HTML file every time. That doesn't scale, and it doesn't match how the rest of my site already works — my projects section is already data-driven, pulling from a single <code>PROJECTS</code> array instead of being hardcoded into the page. The blog needed to follow that same pattern: one reusable page template, and a data file that holds every post as an object inside an array.</p>
@@ -75,6 +76,7 @@ const POSTS = [
       id: "domain-exposure-audit-bash-tool",
       title: "Built a Bash Tool to Help Domain Owners See What Phishers Already See",
       date: "2026-07-30",
+      featured: true,
       excerpt: "domain-exposure-audit.sh — a defensive OSINT tool that surfaces what's publicly discoverable about a domain, so the owner can close the gaps before an attacker finds them.",
       body: `
     <p>I've been deepening my cybersecurity skills alongside my frontend work, and I wanted a project that genuinely combined both. The result is <strong>domain-exposure-audit.sh</strong> — a defensive OSINT (open-source intelligence) tool that surfaces what's publicly discoverable about a domain, before an attacker finds it first.</p>
@@ -128,6 +130,7 @@ const POSTS = [
       id: "dalians-cafe-unsolicited-redesign",
       title: "I Rebuilt Dalian's Café's Website — Nobody Asked, I Did It Anyway",
       date: "2026-07-15",
+      featured: true,
       excerpt: "An unsolicited redesign pitch for Dalian's Café, a European-inspired coffee shop in Downtown LA — because their site wasn't telling their story as well as their coffee does.",
       body: `
     <p>I don't always wait to be asked.</p>
@@ -157,6 +160,7 @@ const POSTS = [
     id: "bash-file-encryption-tool",
     title: "Built a File Encryption Tool Using Bash Scripting",
     date: "2026-05-10",
+    featured: true,
     excerpt: "A command-line file encryption and compression tool, built entirely in Bash, supporting gzip, bzip2, tar, and zip formats — and a first real exercise in Linux fundamentals.",
     body: `
     <p>I built a command-line file encryption tool, written entirely in Bash — no GUI, just the terminal.</p>
@@ -180,6 +184,7 @@ const POSTS = [
     id: "bash-file-decompressor",
     title: "File Decompressor — The Follow-Up I Promised",
     date: "2026-05-15",
+    featured: true,
     excerpt: "The counterpart to my Bash encryption tool: a format-agnostic decompressor that detects gzip, bzip2, tar, and zip files automatically, without relying on the filename.",
     body: `
     <p>After building my file encryption tool in Bash, I said the decryptor was coming. Here it is.</p>
@@ -307,6 +312,7 @@ const POSTS = [
     id: "access-control-privilege-escalation",
     title: "Access Control Vulnerabilities and Privilege Escalation",
     date: "2026-08-19",
+    featured: true,
     excerpt: "Covering access control fundamentals and privilege escalation on PortSwigger's Web Security Academy, and solving four labs on unprotected admin functionality and parameter-based access control.",
     body: `
       <p>Today's focus was access control — specifically, how it breaks, and what privilege escalation actually looks like in practice. Worked through the theory on PortSwigger's Web Security Academy and solved four labs to go with it.</p>
@@ -367,6 +373,7 @@ const POSTS = [
     id: "clatter-first-web-app-kickoff",
     title: "Starting My First Web App: Clatter",
     date: "2026-08-20",
+    featured: true,
     excerpt: "Every site I've built before was a static website. Today I started my first real web app — Clatter, a group chat app with authentication and real-time messaging.",
     body: `
       <p>Every project I've built up to this point has been a website — static or mostly static, no accounts, no persistent user data, nothing that behaves differently depending on who's using it. Today that changed. I started building Clatter, a group chat web app, and my first genuine step into web app territory rather than just web development.</p>
@@ -499,6 +506,7 @@ const POSTS = [
     id: "access-control-day10-auditing-clatter-firestore-rules",
     title: "Day 10 — Applying What I've Learned: Auditing and Fixing Clatter's Own Firestore Security Rules",
     date: "2026-08-26",
+    featured: true,
     excerpt: "Taking a week of access control and privilege escalation lessons and pointing them at my own project — auditing Clatter's live Firestore security rules, finding a real privilege-escalation gap, and fixing it.",
     body: `
       <h2>Situation</h2>
@@ -698,6 +706,7 @@ const POSTS = [
     id: "vibed",
     title: "Building Vibed as a Web App — Where Things Stand",
     date: "2026-09-03",
+    featured: true,
     excerpt: "Progress notes on building Vibed as a responsive web app — vanilla JS and Firebase, built with an actual launch in mind, not just a portfolio piece.",
     body: `
       <p>I'm building Vibed from the ground up as a responsive web app — vanilla JavaScript and Firebase, working across both desktop and mobile layouts — with the intention of actually launching and growing it in a real city, not just shipping it as a portfolio piece.</p>
@@ -747,6 +756,7 @@ const POSTS = [
     id: "vibed-security-controls-client-vs-server",
     title: "Vibed: Input Validation, Session Guards, and the Client-Side Trap",
     date: "2026-09-05",
+    featured: true,
     excerpt: "A security-focused look at what's actually been built into Vibed so far — input validation, logic control, session guards — and the important distinction between validation that protects UX and validation that actually protects data.",
     body: `
       <p>Today's session on Vibed was less about new features and more about looking at what's already been built through a security lens — specifically the event creation and joining flow.</p>
@@ -764,6 +774,50 @@ const POSTS = [
       <p>Here's the part worth being direct about, since it's the actual security lesson today surfaced. Every control described above — the date check, the capacity cap, the duplicate-join guard — currently lives entirely in client-side JavaScript. That's genuinely valuable for user experience: it gives immediate feedback and prevents accidental mistakes. But none of it is real security on its own, because client-side code can always be bypassed. Anyone could open browser dev tools, or call Firestore directly with their own script, and submit an event with a capacity of 500, a date in 2020, or join a full event — completely skipping every check described above, since nothing on the server is currently verifying any of it.</p>
 
       <p>This is the exact same lesson underneath everything covered in the access control module weeks ago: a check that only exists on the client is a suggestion, not a boundary. The real fix is matching Firestore security rules that independently enforce these same constraints server-side — capacity limits, valid dates, no duplicate joins — the same way rules already govern who can read or write group and message data on Clatter. That's the next real security task for Vibed, not a new feature: closing the gap between "the UI won't let you do this" and "the server won't let you do this."</p>
+    `
+  },
+
+  {
+    id: "clatter-launch-web-dev-and-security-showcase",
+    title: "Clatter Is Live — A Web App, Not Just an Idea",
+    date: "2026-09-06",
+    featured: true,
+    excerpt: "Clatter, my group chat web app, is now live and shareable. A full breakdown of what was actually built — the frontend, the data model, the real-time chat — and the security work behind it, including a genuine privilege-escalation flaw I found and fixed in my own code.",
+    body: `
+      <p>"Demonstration is the proof of knowledge. You can say that you can do it, but until you have done it and we have seen it, do we know that you know it?"</p>
+
+      <p>That's the whole reason this post exists. I've written a lot about learning — labs, courses, certificates — but Clatter is different. It's not a lab. It's a real, working, live application, and it's time to actually show it rather than just talk about it.</p>
+
+      <p><strong>Try it here: </strong> <a id="link-to-git" href="https://augustfire26-8463d.web.app/" target="_blank"> Clatter →</a></p>
+
+      <h2>What Clatter Actually Is</h2>
+      <p>Clatter is a group chat web app — "Your loudest chat deserves its own app." Sign up, complete a profile with a permanent username, get automatically dropped into a few default groups, and start chatting in real time. You can create your own groups, invite people by username, reply to specific messages, edit or delete your own messages, react with emoji, and manage your account, including full deletion if you want out.</p>
+
+      <h2>The Web Development Side</h2>
+      <p>Built entirely in vanilla JavaScript on top of Firebase — no frameworks. A few things worth pointing out specifically:</p>
+      <ul>
+        <li><strong>Real-time everything.</strong> Groups and messages update live using Firestore's <code>onSnapshot</code> listeners — no refresh button, no polling. Send a message, and it appears instantly for everyone in that group.</li>
+        <li><strong>A genuinely structured data model.</strong> Messages live as a subcollection nested under each group document, rather than one flat collection — a deliberate redesign from an earlier version that used a much simpler structure. Group documents track their own members and admins as arrays, which the app reads to render membership, and which the backend independently verifies (more on that below).</li>
+        <li><strong>Full account lifecycle.</strong> Email/password and Google sign-in, a guided profile-completion step with live username-uniqueness checking, editable profile details with photo upload, and a delete-account flow that properly removes you from every group you belonged to before deleting your profile and login credentials — not just a surface-level "delete" that leaves orphaned data behind.</li>
+        <li><strong>Small UX details that add up:</strong> reply-to-message threading, an emoji picker, debounced username search when adding members to a group, and local caching of profile data so the app feels fast without hammering Firestore on every page load.</li>
+      </ul>
+
+      <h2>The Security Side</h2>
+      <p>This is the part I actually want to highlight, because it's not something bolted on after the fact — it's something I went back and deliberately tested, the same way I'd approach any real target.</p>
+      <p>Once I started learning access control and privilege escalation concepts properly, I turned that lens on my own project instead of only practicing on labs. Auditing Clatter's actual backend rules surfaced a genuine, real vulnerability: a regular, non-admin member of a group could technically rewrite the group's admin list and grant themselves elevated permissions — including the ability to delete a group they were never supposed to control. Same category of bug as things I'd been studying, just found in my own code instead of someone else's deliberately vulnerable app.</p>
+      <p>I fixed it properly rather than papering over it — members can still join and leave groups freely, but only actual admins can touch anything admin-related. I also confirmed message impersonation is blocked (nobody can send a message that appears to come from someone else), and that access to any group or its messages is verified server-side against real membership, not just trusted from whatever the app's interface displays.</p>
+
+      <h2>Where It Genuinely Falls Short</h2>
+      <p>I'd rather say this plainly than have someone discover it and wonder if I knew. This is a personal project — a demonstration that I can build and secure a real, working application — not a production product, and not something I'm claiming is bulletproof:</p>
+      <ul>
+        <li>No email verification on signup — an account is usable immediately, with nothing confirming the email address is real.</li>
+        <li>Profile photos are stored as base64 data directly in the database rather than proper file storage — simple, but inefficient and capped by document size limits.</li>
+        <li>Any signed-in user can currently read any other user's full profile, including their email — a deliberate tradeoff for username discovery that a real product would need to reconsider.</li>
+        <li>No pagination, typing indicators, or read receipts — the chat itself is intentionally minimal, a working proof of concept rather than a feature-complete messaging platform.</li>
+      </ul>
+
+      <h2>Why This Matters More Than Another Lab Completion</h2>
+      <p>Every course, certificate, and lab I've documented has been valuable — but they all come with the answer key nearby, in some form. Clatter didn't. I built it, found a real flaw in my own work without anyone pointing me at it, and fixed it properly. That's the difference between knowing the theory and actually being able to apply it — and it's exactly why this one gets a live link instead of just a writeup.</p>
     `
   }
 ]

@@ -1,4 +1,4 @@
-let blogOrder = "newest"
+let blogOrder = "featured"
 let observer;
 
 const setActiveChip=(filterValue)=> {
@@ -15,13 +15,21 @@ const renderBlogs=()=> {
         POSTS.sort((a,b) => {
             return new Date(b.date) - new Date(a.date)
         })
-    } else {
+    } else if (blogOrder === "oldest") {
         POSTS.sort((a,b) => {
             return new Date(a.date) - new Date(b.date)
         })
+    } else if (blogOrder === "featured") {
+        POSTS.sort((a,b) => {
+            return new Date(b.date) - new Date(a.date)
+        })
     }
 
-    POSTS.forEach((post)=> {
+    const postsToRender = blogOrder === "featured"
+    ? POSTS.filter(post => post.featured)
+    : POSTS
+
+    postsToRender.forEach((post)=> {
         const blogCard = document.createElement("div")
         blogCard.classList.add("project-card")
         blogCard.setAttribute("data-reveal", "")
