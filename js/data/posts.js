@@ -819,6 +819,36 @@ const POSTS = [
       <h2>Why This Matters More Than Another Lab Completion</h2>
       <p>Every course, certificate, and lab I've documented has been valuable — but they all come with the answer key nearby, in some form. Clatter didn't. I built it, found a real flaw in my own work without anyone pointing me at it, and fixed it properly. That's the difference between knowing the theory and actually being able to apply it — and it's exactly why this one gets a live link instead of just a writeup.</p>
     `
+  },
+
+  {
+    id: "portfolio-v3-main-site-to-blog-system",
+    title: "Building Portfolio v3 — From the Dual-Mode Homepage to a Working Blog System",
+    date: "2026-09-06",
+    featured: true,
+    excerpt: "A full technical walkthrough of Portfolio v3 — how one data-mode attribute drives an entire Studio/Ops theme swap, and how the blog system layered on top of it without duplicating a single line of existing architecture.",
+    body: `
+      <p>This site has grown from a single dual-mode homepage into something with a real content system behind it. Here's how the whole thing actually fits together, from the homepage down to the blog you're reading this on.</p>
+
+      <h2>The Core Idea: One Attribute, Two Identities</h2>
+      <p>Everything on the homepage — the hero text, the color palette, the toolbox cards, even which project filter loads by default — is driven by a single <code>data-mode</code> attribute set on the root <code>&lt;html&gt;</code> element. Toggling it between <code>studio</code> and <code>ops</code> triggers a full re-render: <code>renderCopy()</code> swaps the hero eyebrow, headline, and bio text; <code>renderRoles()</code> rebuilds the toolbox grid from a mode-specific data set; <code>renderProjects()</code> re-filters and defaults to a different project category depending on which persona is active. No page reload, no separate URLs — one HTML document presenting two coherent identities.</p>
+
+      <h2>Data-Driven, Not Hardcoded</h2>
+      <p>None of the content on the homepage is written directly into the HTML. Projects live in <code>projects.js</code> as a plain array of objects — each with an <code>id</code>, <code>category</code>, tags, and links — and <code>renderProjects()</code> loops through that array, builds a card for each one, and filters by whichever chip is active. Copy for each mode lives in <code>copy.js</code>, toolbox content in <code>roles.js</code>. Adding a new project, or rewriting the Ops persona's bio, never means touching the HTML structure — just the data feeding it.</p>
+
+      <h2>Scroll-Triggered Reveals</h2>
+      <p>Every section and card carries a <code>data-reveal</code> attribute, and a single shared <code>IntersectionObserver</code> instance watches all of them, adding a <code>.revealed</code> class the moment an element scrolls into view — then immediately unobserving it, since the animation only needs to fire once. This same observer pattern is reused, unmodified, in the blog's rendering code — one piece of infrastructure, two different content types animating the same way.</p>
+
+      <h2>Extending the Architecture: The Blog</h2>
+      <p>When it came time to add a blog, the goal was to reuse the existing patterns rather than invent new ones. Posts live in <code>posts.js</code> as an array of objects — <code>id</code>, <code>title</code>, <code>date</code>, <code>featured</code>, <code>excerpt</code>, <code>body</code> — loaded the same way <code>projects.js</code> is: a plain <code>&lt;script&gt;</code> tag exposing a global array, no build step, no fetch call.</p>
+      <p><code>blog.html</code> renders every post as a card using the exact same <code>.project-card</code> styling and reveal animation as the homepage's project grid — visually consistent without writing a single new CSS rule for the card itself. Filtering works through the same chip-and-<code>activeFilter</code> pattern from <code>main.js</code>, just renamed to <code>blogOrder</code> and driving sort order (Newest, Oldest) and a <code>featured</code> boolean filter instead of a category.</p>
+
+      <h2>One Template, Every Post</h2>
+      <p><code>post.html</code> is a single, reusable page — never duplicated per post. It reads a <code>?slug=</code> value from the URL, searches <code>POSTS</code> for the matching <code>id</code>, and injects that post's title, date, and full HTML body into the page. Publishing a new post means adding one object to <code>posts.js</code> — nothing else in the site changes. A not-found state handles a broken or missing slug gracefully instead of crashing, checked immediately after the search and before anything touches the (possibly nonexistent) post's data.</p>
+
+      <h2>Why Build It This Way</h2>
+      <p>The whole point was to avoid a second, separate system living awkwardly next to the first. The blog inherits the homepage's visual language, its animation system, its filter-chip interaction pattern, and its data-file-over-hardcoded-HTML philosophy — because a site that documents ongoing frontend and security work should itself be a decent demonstration of how that work actually gets structured.</p>
+    `
   }
 ]
 
