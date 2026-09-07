@@ -11,7 +11,7 @@ const PROJECTS = [
         ],
         link: {
             demo: "https://augustfire26-8463d.web.app/",
-            github: ""
+            github: "https://github.com/EgbewaleToluwani/Clatter"
         }
     },
 

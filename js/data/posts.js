@@ -849,6 +849,30 @@ const POSTS = [
       <h2>Why Build It This Way</h2>
       <p>The whole point was to avoid a second, separate system living awkwardly next to the first. The blog inherits the homepage's visual language, its animation system, its filter-chip interaction pattern, and its data-file-over-hardcoded-HTML philosophy — because a site that documents ongoing frontend and security work should itself be a decent demonstration of how that work actually gets structured.</p>
     `
+  },
+
+  {
+    id: "day20-writing-a-cors-exploit-and-detection-script",
+    title: "Day 20 — Writing My First CORS Exploit, and a Script to Detect Misconfigurations",
+    date: "2026-09-07",
+    excerpt: "Moving from studying CORS vulnerabilities to actually writing the exploit code myself — a JavaScript proof-of-concept targeting a deliberately vulnerable PortSwigger lab, plus a bash script to check for misconfigured CORS headers.",
+    body: `
+      <p>After spending several days on CORS theory — origin reflection, whitelist parsing mistakes, the null origin trap, XSS trust chains — today was about actually writing the exploit myself, against a deliberately vulnerable PortSwigger lab environment, rather than just reading through how the attack works.</p>
+    
+      <h2>Building the Detection Script First</h2>
+      <p>Before writing any exploit code, I wrote a small bash script to check whether a target's CORS configuration is actually misconfigured in the first place — sending a request with a deliberately untrusted <code>Origin</code> header attached and inspecting the response headers that come back. If the server reflects that untrusted origin back in <code>Access-Control-Allow-Origin</code> instead of rejecting it, that's the signal the vulnerability exists. This is the same manual check underlying every CORS lab from the past week, just automated into something reusable instead of manually inspecting headers by hand each time.</p>
+    
+      <h2>Writing the Actual Exploit</h2>
+      <p>From there, I started building the JavaScript proof-of-concept that a real attacker's page would host: a script that issues a credentialed request to the vulnerable endpoint, relying on the exact misconfiguration the bash script detects — a server trusting an origin it shouldn't, combined with credentials being allowed cross-origin. The intent is straightforward: if the target's session cookie gets included automatically because the browser trusts the malicious origin, the response should contain data belonging to the logged-in victim, retrievable by a page the victim never intended to grant access to.</p>
+    
+      <p>The script isn't finished yet — it currently fetches the response but doesn't yet do anything with it beyond logging. The next piece is exfiltrating that captured data back to an attacker-controlled server, which is the step that actually completes the attack chain from "read data I shouldn't be able to read" to "get that data out to somewhere I control."</p>
+    
+      <h2>Why Writing It Matters More Than Reading About It</h2>
+      <p>There's a real difference between explaining how a CORS exploit works and actually producing working code that does it, even against a lab built specifically for this purpose. Writing the detection script forced me to think about exactly which response header actually proves a misconfiguration, rather than just describing the concept. Writing the exploit itself forced me to think about credentials, response handling, and exfiltration as separate, sequential problems rather than one abstract idea.</p>
+    
+      <h2>What's Next</h2>
+      <p>Finish the exfiltration piece, and confirm the exploit works end to end against the lab environment it's targeting.</p>
+    `
   }
 ]
 
