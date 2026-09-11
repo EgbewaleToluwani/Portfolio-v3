@@ -873,6 +873,33 @@ const POSTS = [
       <h2>What's Next</h2>
       <p>Finish the exfiltration piece, and confirm the exploit works end to end against the lab environment it's targeting.</p>
     `
+  },
+
+  {
+    id: "vibed-home-feed-events-and-reauth-security",
+    title: "Day 23 — Vibed: Building the Actual App (And Yes, This One's Mostly Web Dev)",
+    date: "2026-09-11",
+    excerpt: "A full build day on Vibed — live event feed, create/join/leave flows, event chat list, and account deletion — plus a real security requirement I added along the way: re-authentication before destroying an account.",
+    body: `
+      <p>Today was, honestly, mostly a web development day rather than a pure security one — and I want to own that directly instead of dressing it up as something it wasn't. But building a real, working application end to end is its own kind of demonstration, and there's a genuine security piece embedded in it worth walking through properly.</p>
+
+      <h2>What Actually Got Built</h2>
+      <p>The Home feed is now fully live — every upcoming event streams in real time via <code>onSnapshot</code>, filtered to exclude events the current user has already joined and events that are already full. Create Event went from a stubbed form to something that writes a real event document to Firestore and, alongside it, a matching chat document — two related pieces of data created together so the group chat exists the moment the event does.</p>
+
+      <p>Join and leave flows are functional both from the Home feed and from a dedicated Events page, which splits cleanly into "Events You Created" and "Events You Joined," each with a live count. Hosts get a different action entirely — deleting their own event, which properly clears the member list on both the event and its chat before removing the documents themselves, rather than leaving orphaned references behind. The Chats view now lists every event a user belongs to, pulling live chat metadata for each one.</p>
+
+      <h2>The Security Piece: Re-Authentication Before Destruction</h2>
+      <p>Account deletion now requires the user to re-enter their password immediately before the deletion actually proceeds — a real Firebase security requirement, not just a UX nicety. Deleting an account, and everything tied to it, is exactly the kind of destructive, high-stakes action that shouldn't be gated only by "you happen to still have an active session." A stolen or unattended session shouldn't be enough on its own to permanently destroy someone's account and data — re-confirming the actual password closes that gap.</p>
+
+      <h2>A Second, Quieter Security Detail</h2>
+      <p>The app now checks, every time auth state changes, whether the currently signed-in Firebase user actually matches the cached user in local storage — and if they don't match, it forces a full sign-out rather than trusting the stale cached data. This closes a subtle but real class of bug: without this check, a mismatch between an active session and cached local data could let stale information leak into a screen that should reflect a different, current user.</p>
+
+      <h2>Where I'm Being Honest With Myself</h2>
+      <p>The join/leave capacity checks — confirming a user hasn't already joined, confirming an event isn't already full — currently live in client-side JavaScript, the exact same caveat flagged a few days ago about Vibed's event creation logic. None of it is enforced server-side yet. That's still the real next security task waiting on this project, not a new feature.</p>
+
+      <h2>Why This Still Counts</h2>
+      <p>Not every day of a security challenge has to be a new exploit or a new lab. Building a genuinely functional application — one with real data relationships, cascading deletes, live state, and at least one deliberate security control — is its own form of practice, and a reminder that security work is often about noticing where an ordinary feature (like account deletion) actually needs a harder guarantee than the rest of the app.</p>
+    `
   }
 ]
 
