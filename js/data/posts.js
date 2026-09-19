@@ -905,33 +905,34 @@ const POSTS = [
   {
     id: "day30-thirty-day-cybersecurity-challenge-recap",
     title: "Day 30 — What 30 Days of Cybersecurity Actually Added Up To",
-    date: "2026-09-16",
+    date: "2026-09-18",
     featured: true,
     excerpt: "The final entry in a 30-day cybersecurity challenge — a concise look back at what was actually learned, built, broken, and fixed, from access control fundamentals to real bug bounty work.",
     body: `
       <p>Thirty days ago this started as a simple commitment: learn one new thing a day. Here's what it actually added up to.</p>
-    
+      <p><strong>Full challenge on my  </strong> <a id="link-to-git" href="https://www.linkedin.com/in/toluwani-egbewale-62b331400" target="_blank" style="text-decoration: underline;"> LinkedIn</a></p>
+
       <h2>Core Vulnerability Classes, Studied and Exploited</h2>
       <p>Went deep on two full PortSwigger modules — access control (IDOR, horizontal and vertical privilege escalation, multi-step and referer-based bypasses, platform misconfiguration) and CORS (origin reflection, whitelist parsing flaws, the null origin trap, XSS trust chains, TLS downgrade attacks, intranet-only attacks). Didn't stop at understanding them — wrote working exploit code for two separate CORS vulnerabilities, including a chained CORS-plus-XSS attack, complete with actually debugging broken exploit code and learning why a syntax error hidden inside a string won't get flagged by an editor.</p>
-    
+
       <h2>Offensive Tooling, Hands-On</h2>
       <p>Worked through SEToolkit's social engineering modules — credential harvesting, site cloning, QR code attack vectors, mass mailer campaigns — and completed a full local exploitation chain in an isolated VM lab: payload delivery, a live Meterpreter session, and file exfiltration, start to finish.</p>
-    
+
       <h2>Reconnaissance and OSINT</h2>
       <p>Covered username, email, phone, and subdomain reconnaissance, and Google dorking as a structured OSINT technique, understanding what a well-constructed search reveals about an organization before anyone even attempts a technical attack.</p>
-    
+
       <h2>Real Applications, Real Security Work</h2>
       <p>This is the part that mattered most. Audited Clatter's own Firestore security rules and found a genuine privilege-escalation flaw — a regular group member could have rewritten the admin list and granted themselves elevated access — then fixed it properly. Applied the same lens to Vibed while building it, catching a client-side-only validation gap before it became a real vulnerability, and adding proper re-authentication before account deletion.</p>
-    
+
       <h2>Network Traffic, From Both Directions</h2>
       <p>Wireshark and tshark sessions made the abstract concrete: watching real credentials sit in cleartext over unprotected HTTP, then directly contrasting that against a full TLS handshake collapsing into unreadable "Application Data" — plus the more subtle lesson that even TLS 1.3 still leaks the destination hostname via SNI.</p>
-    
+
       <h2>Moving Into the Real World</h2>
       <p>Set up on Bugcrowd, learned how bug bounty programs actually evaluate scope and reward tiers, and started genuine hands-on testing against a live program — Burp Suite running, real test accounts, real traffic mapped. No bounty yet, and that's an honest, expected part of the process, not a gap to hide.</p>
-    
+
       <h2>What This Actually Was</h2>
       <p>Certificates from MCSI's MICS program along the way, self-study completed across all five ISC2 CC domains — but the certificates were never really the point. The point was the pattern underneath almost everything above: client-side checks are suggestions, not boundaries; trust extended to another origin is only as strong as what it's actually verifying; and the fastest way to actually know you understand something is to build it, break it, or find where someone else already broke it.</p>
-    
+
       <p>Thirty days, documented as it happened rather than cleaned up afterward. That was always the actual goal.</p>
     `
   }
